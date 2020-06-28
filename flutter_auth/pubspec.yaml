@@ -11,6 +11,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  google_sign_in: ^4.1.0
+  shared_preferences: 0.5.7+1
+  json_annotation: 3.0.0
+  apple_sign_in: ^0.1.0
+  get_it: ^3.1.0
+  http_logger: 1.0.0
 
 dev_dependencies:
   flutter_test:
