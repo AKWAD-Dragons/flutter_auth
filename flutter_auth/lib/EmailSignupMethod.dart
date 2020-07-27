@@ -1,5 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:fly_networking/GraphQB/graph_qb.dart';
+import 'package:fly_networking/NetworkProvider/APIManager.dart';
+import 'package:fly_networking/fly.dart';
 import 'package:http/http.dart' show Response;
 
 import 'package:get_it/get_it.dart';
@@ -60,7 +63,7 @@ class EmailSignupMethod implements AuthMethod {
   Future<AuthUser> _restAuth() async {
     Map responseMap;
     _apiManager.setEncodedBodyFromMap(map: restSignupMap);
-    await _apiManager.post(apiLink).then((Response response) {
+    await _apiManager.post(apiLink,body: restSignupMap).then((Response response) {
       responseMap = jsonDecode(response.body);
     });
 

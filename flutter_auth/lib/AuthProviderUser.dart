@@ -1,5 +1,5 @@
+import 'package:fly_networking/fly.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_auth/support/fly.dart';
 
 import 'UserInterface.dart';
 
