@@ -1,6 +1,8 @@
 import 'dart:convert';
 
-import 'package:sercl_customer/support/Auth/AuthProviderUser.dart';
+
+
+import 'package:flutter_auth/AuthProviderUser.dart';
 
 import 'AppException.dart';
 import 'AuthMethod.dart';
