@@ -1,11 +1,7 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fly_networking/GraphQB/graph_qb.dart';
-import 'package:fly_networking/NetworkProvider/APIManager.dart';
 import 'package:fly_networking/fly.dart';
-import 'package:http/http.dart' show Response;
 
-import 'package:get_it/get_it.dart';
 import 'AuthMethod.dart';
 import 'AuthProviderUser.dart';
 
@@ -14,10 +10,6 @@ import 'UserInterface.dart';
 class EmailSignupMethod implements AuthMethod {
   @override
   String serviceName = 'email';
-  final APIManager _apiManager = GetIt.instance<APIManager>();
-
-  /// `Map` that gets called in REST `API` case
-  Map<dynamic, dynamic> restSignupMap;
 
   /// `Map` that gets called in `GraphQL` case
   Node graphSignupNode;
@@ -34,7 +26,7 @@ class EmailSignupMethod implements AuthMethod {
   Fly fly;
 
   EmailSignupMethod.rest({
-    @required this.restSignupMap,
+    // @required this.restSignupMap,
     @required this.apiLink,
     @required this.errorKey,
     @required this.errorFunction,
@@ -51,27 +43,8 @@ class EmailSignupMethod implements AuthMethod {
   @override
   Future<AuthUser> auth() async {
     /// assure that one of two ways exists
-    assert(restSignupMap == null && graphSignupNode == null);
-
-    if (restSignupMap != null) {
-      return _restAuth();
-    } else if (graphSignupNode != null) {
+    assert(graphSignupNode == null);
       return _graphQLAuth();
-    }
-  }
-
-  Future<AuthUser> _restAuth() async {
-    Map responseMap;
-    _apiManager.setEncodedBodyFromMap(map: restSignupMap);
-    await _apiManager.post(apiLink,body: restSignupMap).then((Response response) {
-      responseMap = jsonDecode(response.body);
-    });
-
-    if (responseMap.containsKey(errorKey)) {
-      errorFunction(errorKey);
-    } else {
-      return AuthProviderUser()..accessToken = responseMap[tokenKey];
-    }
   }
 
   Future<AuthUser> _graphQLAuth() async {
