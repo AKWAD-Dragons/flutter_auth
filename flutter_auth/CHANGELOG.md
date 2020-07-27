@@ -1,3 +1,3 @@
-## 0.0.1
+## 1.0.0-dev.1. - First Version (Pre-release)
 
-* TODO: Describe initial release.
+* TODO: Added common authentication methods
