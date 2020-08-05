@@ -41,7 +41,7 @@ class EmailLoginMethod implements AuthMethod {
 
   @override
   Future<AuthUser> auth() async {
-    assert(graphLoginNode == null);
+    assert(graphLoginNode != null);
 
       return _graphQLAuth();
   }
