@@ -42,7 +42,8 @@ class EmailSignupMethod implements AuthMethod {
 
   @override
   Future<AuthUser> auth() async {
-    assert(graphSignupNode != null);
+    /// assure that one of two ways exists
+    assert(graphSignupNode == null);
       return _graphQLAuth();
   }
 
