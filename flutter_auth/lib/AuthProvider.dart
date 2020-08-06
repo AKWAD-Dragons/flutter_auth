@@ -18,7 +18,7 @@ import 'AuthMethod.dart';
 
 import 'UserInterface.dart';
 
-class AuthProvider<T> {
+class AuthProvider<T extends AuthUser> {
   AuthUser _user;
   Type _authMethodType;
 

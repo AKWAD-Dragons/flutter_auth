@@ -10,7 +10,7 @@ class AuthProviderUser implements AuthUser, Parser<AuthProviderUser> {
   String accessToken;
   String idToken;
   String expire;
-  String jwtToken;
+  String token;
   String id;
   String role;
   String type;

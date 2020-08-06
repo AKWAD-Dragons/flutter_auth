@@ -7,7 +7,7 @@ import 'AuthProviderUser.dart';
 
 import 'UserInterface.dart';
 
-class EmailSignupMethod implements AuthMethod {
+class GraphEmailSignupMethod implements AuthMethod {
   @override
   String serviceName = 'email';
 
@@ -25,15 +25,7 @@ class EmailSignupMethod implements AuthMethod {
 
   Fly fly;
 
-  EmailSignupMethod.rest({
-    // @required this.restSignupMap,
-    @required this.apiLink,
-    @required this.errorKey,
-    @required this.errorFunction,
-  }) {
-    fly = Fly(this.apiLink);
-  }
-  EmailSignupMethod.graphQL({
+  GraphEmailSignupMethod({
     @required this.graphSignupNode,
     @required this.apiLink,
   }) {
@@ -42,18 +34,18 @@ class EmailSignupMethod implements AuthMethod {
 
   @override
   Future<AuthUser> auth() async {
-    /// assure that one of two ways exists
-    assert(graphSignupNode == null);
-      return _graphQLAuth();
-  }
-
-  Future<AuthUser> _graphQLAuth() async {
     await fly.mutation([this.graphSignupNode]);
     return AuthProviderUser();
   }
 
   @override
-  Future<void> logout() {
-    return null;
+  Future<void> logout() async {
+    await fly.query([
+      Node(
+        name: 'logout',
+        args: {},
+        cols: [],
+      )
+    ]);
   }
 }

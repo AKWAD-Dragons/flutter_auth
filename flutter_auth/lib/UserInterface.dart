@@ -1,6 +1,7 @@
 abstract class AuthUser {
  String expire;
- String jwtToken;
+ String id;
+ String token;
  String role;
  String type;
  
