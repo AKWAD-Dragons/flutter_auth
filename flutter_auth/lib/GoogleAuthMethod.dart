@@ -1,5 +1,4 @@
-import 'package:flutter_auth/AuthProviderUser.dart';
-
+import 'package:auth_provider/AuthProviderUser.dart';
 import 'AppException.dart';
 import 'AuthMethod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
