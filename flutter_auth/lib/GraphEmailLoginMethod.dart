@@ -7,7 +7,7 @@ import 'AuthProviderUser.dart';
 import 'AuthMethod.dart';
 import 'UserInterface.dart';
 
-class EmailLoginMethod implements AuthMethod {
+class GraphEmailLoginMethod implements AuthMethod {
   @override
   String serviceName = 'email';
 
@@ -25,14 +25,7 @@ class EmailLoginMethod implements AuthMethod {
 
   Fly fly;
 
-  EmailLoginMethod.rest({
-    @required this.apiLink,
-    @required this.errorKey,
-    @required this.errorFunction,
-  }) {
-    fly = Fly(this.apiLink);
-  }
-  EmailLoginMethod.graphQL({
+  GraphEmailLoginMethod({
     @required this.graphLoginNode,
     @required this.apiLink,
   }) {
@@ -41,12 +34,6 @@ class EmailLoginMethod implements AuthMethod {
 
   @override
   Future<AuthUser> auth() async {
-    assert(graphLoginNode == null);
-
-      return _graphQLAuth();
-  }
-
-  Future<AuthUser> _graphQLAuth() async {
     Map result = await fly.mutation([graphLoginNode],
         parsers: {graphLoginNode.name: AuthProviderUser()});
     AuthProviderUser user = result[graphLoginNode.name];
