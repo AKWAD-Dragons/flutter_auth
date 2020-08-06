@@ -11,7 +11,7 @@ AuthProviderUser _$AuthProviderUserFromJson(Map<String, dynamic> json) {
     ..accessToken = json['accessToken'] as String
     ..idToken = json['idToken'] as String
     ..expire = json['expire'] as String
-    ..jwtToken = json['jwtToken'] as String
+    ..token = json['jwtToken'] as String
     ..id = json['id'] as String
     ..role = json['role'] as String
     ..type = json['type'] as String
@@ -23,7 +23,7 @@ Map<String, dynamic> _$AuthProviderUserToJson(AuthProviderUser instance) =>
       'accessToken': instance.accessToken,
       'idToken': instance.idToken,
       'expire': instance.expire,
-      'jwtToken': instance.jwtToken,
+      'jwtToken': instance.token,
       'id': instance.id,
       'role': instance.role,
       'type': instance.type,
