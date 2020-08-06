@@ -40,9 +40,9 @@ class GraphEmailSignupMethod implements AuthMethod {
 
   @override
   Future<void> logout() async {
-    await fly.mutation([
+    await fly.query([
       Node(
-        name: "logout",
+        name: 'logout',
         args: {},
         cols: [],
       )
