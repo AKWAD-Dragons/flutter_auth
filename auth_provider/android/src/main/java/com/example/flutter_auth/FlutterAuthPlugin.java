@@ -1,4 +1,4 @@
-package com.example.flutter_auth;
+package com.example.auth_provider;
 
 import androidx.annotation.NonNull;
 
@@ -9,8 +9,8 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
-/** FlutterAuthPlugin */
-public class FlutterAuthPlugin implements FlutterPlugin, MethodCallHandler {
+/** AuthProviderPlugin */
+public class AuthProviderPlugin implements FlutterPlugin, MethodCallHandler {
   /// The MethodChannel that will the communication between Flutter and native Android
   ///
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
@@ -19,7 +19,7 @@ public class FlutterAuthPlugin implements FlutterPlugin, MethodCallHandler {
 
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
-    channel = new MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "flutter_auth");
+    channel = new MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "auth_provider");
     channel.setMethodCallHandler(this);
   }
 
@@ -33,8 +33,8 @@ public class FlutterAuthPlugin implements FlutterPlugin, MethodCallHandler {
   // depending on the user's project. onAttachedToEngine or registerWith must both be defined
   // in the same class.
   public static void registerWith(Registrar registrar) {
-    final MethodChannel channel = new MethodChannel(registrar.messenger(), "flutter_auth");
-    channel.setMethodCallHandler(new FlutterAuthPlugin());
+    final MethodChannel channel = new MethodChannel(registrar.messenger(), "auth_provider");
+    channel.setMethodCallHandler(new AuthProviderPlugin());
   }
 
   @Override

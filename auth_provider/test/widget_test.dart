@@ -1,9 +1,9 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:auth_provider/flutter_auth.dart';
+import 'package:auth_provider/auth_provider.dart';
 
 void main() {
-  const MethodChannel channel = MethodChannel('flutter_auth');
+  const MethodChannel channel = MethodChannel('auth_provider');
 
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -18,6 +18,6 @@ void main() {
   });
 
   test('getPlatformVersion', () async {
-    expect(await FlutterAuth.platformVersion, '42');
+    expect(await AuthProvider.platformVersion, '42');
   });
 }

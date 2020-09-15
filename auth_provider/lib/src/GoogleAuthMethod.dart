@@ -1,6 +1,7 @@
-import 'package:auth_provider/AuthProviderUser.dart';
+import 'package:fly_networking/Auth/AppException.dart';
 
-import 'AppException.dart';
+import 'AuthProviderUser.dart';
+
 import 'AuthMethod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 

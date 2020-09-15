@@ -1,32 +1,32 @@
-import 'package:flutter/material.dart';
 import 'package:fly_networking/GraphQB/graph_qb.dart';
 import 'package:fly_networking/fly.dart';
 
-import 'AuthMethod.dart';
+import 'package:flutter/material.dart';
 import 'AuthProviderUser.dart';
 
-import 'UserInterface.dart';
+import 'AuthMethod.dart';
+import 'AuthUser.dart';
 
-class GraphEmailSignupMethod implements AuthMethod {
+class GraphEmailLoginMethod implements AuthMethod {
   @override
   String serviceName = 'email';
 
   /// `Map` that gets called in `GraphQL` case
-  Node graphSignupNode;
+  Node graphLoginNode;
 
   String apiLink;
 
-  /// How you expect to find the token in responce `Map`, to be `String`, `Map`, `dynamic`, ...
+  /// How you expect to find the token in responce, `Map`, to be `String`, `Map`, `dynamic`, ...
   Object tokenKey;
 
-  /// How you expect to find the error in responce `Map`, to be `String`, `Map`, `dynamic`, ...
+  /// How you expect to find the error in responce, `Map`, to be `String`, `Map`, `dynamic`, ...
   Object errorKey;
   Function(Object error) errorFunction;
 
   Fly fly;
 
-  GraphEmailSignupMethod({
-    @required this.graphSignupNode,
+  GraphEmailLoginMethod({
+    @required this.graphLoginNode,
     @required this.apiLink,
   }) {
     fly = Fly(this.apiLink);
@@ -34,8 +34,10 @@ class GraphEmailSignupMethod implements AuthMethod {
 
   @override
   Future<AuthUser> auth() async {
-    await fly.mutation([this.graphSignupNode]);
-    return AuthProviderUser();
+    Map result = await fly.mutation([graphLoginNode],
+        parsers: {graphLoginNode.name: AuthProviderUser()});
+    AuthProviderUser user = result[graphLoginNode.name];
+    return user;
   }
 
   @override

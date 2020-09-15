@@ -1,7 +1,7 @@
 import 'package:fly_networking/fly.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'UserInterface.dart';
+import 'AuthUser.dart';
 
 part 'AuthProviderUser.g.dart';
 

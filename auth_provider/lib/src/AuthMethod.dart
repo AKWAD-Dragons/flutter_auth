@@ -1,5 +1,4 @@
-import 'GoogleAuthMethod.dart';
-import 'UserInterface.dart';
+import 'AuthUser.dart';
 
 abstract class AuthMethod {
   String serviceName; // ex. google, facebook, github

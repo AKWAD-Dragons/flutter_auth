@@ -16,7 +16,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'AuthMethod.dart';
 
-import 'UserInterface.dart';
+import 'AuthUser.dart';
 
 class AuthProvider<T extends AuthUser> {
   AuthUser _user;

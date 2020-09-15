@@ -34,10 +34,10 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.example.flutter_auth
-        pluginClass: FlutterAuthPlugin
+        package: com.example.auth_provider
+        pluginClass: AuthProviderPlugin
       ios:
-        pluginClass: FlutterAuthPlugin
+        pluginClass: AuthProviderPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
