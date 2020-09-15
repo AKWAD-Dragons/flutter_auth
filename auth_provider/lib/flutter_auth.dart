@@ -1,13 +1,7 @@
-import 'dart:async';
+library flutter_auth;
 
-import 'package:flutter/services.dart';
-
-class FlutterAuth {
-  static const MethodChannel _channel =
-      const MethodChannel('flutter_auth');
-
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
-  }
-}
+export './src/flutter_auth.dart';
+export './src/GraphEmailLoginMethod.dart';
+export './src/GraphEmailSignupMethod.dart';
+export './src/AuthProviderUser.dart';
+export './src/AuthProvider.dart';
