@@ -1,7 +1,7 @@
-library flutter_auth;
+library auth_provider;
 
-export './src/flutter_auth.dart';
+export './src/auth_provider.dart';
 export './src/GraphEmailLoginMethod.dart';
 export './src/GraphEmailSignupMethod.dart';
 export './src/AuthProviderUser.dart';
-export './src/AuthProvider.dart';
+export './src/auth_provider.dart';

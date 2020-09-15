@@ -19,5 +19,5 @@ doc/api/
 *.js_
 *.js.deps
 *.js.map
-flutter_auth/.idea/
+auth_provider/.idea/
 .idea/

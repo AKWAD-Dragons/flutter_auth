@@ -1,4 +1,4 @@
-group 'com.example.flutter_auth'
+group 'com.example.auth_provider'
 version '1.0'
 
 buildscript {

@@ -2,9 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 
-class FlutterAuth {
-  static const MethodChannel _channel =
-      const MethodChannel('flutter_auth');
+class AuthProvider {
+  static const MethodChannel _channel = const MethodChannel('auth_provider');
 
   static Future<String> get platformVersion async {
     final String version = await _channel.invokeMethod('getPlatformVersion');
