@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   get_it: 4.0.4
+  fly_networking: ^2.0.0
 
   auth_provider:
     path: ../auth_provider

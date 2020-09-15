@@ -1,8 +1,8 @@
 import 'package:auth_provider/auth_provider.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
+import 'package:fly_networking/GraphQB/graph_qb.dart';
 
-import 'package:flutter/services.dart';
+import 'package:get_it/get_it.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,31 +15,13 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
+  AuthProvider _authProvider;
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      platformVersion = await AuthProvider.platformVersion;
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
+    GetIt.instance
+        .registerLazySingleton<AuthProvider>(() => AuthProvider(User()));
   }
 
   @override
@@ -47,12 +29,88 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Auth Provider example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              RaisedButton(
+                child: Text("signup with email"),
+                onPressed: () async {
+                  User myUser = await signup();
+                  print(myUser);
+                },
+              ),
+              RaisedButton(
+                child: Text("login with email"),
+                onPressed: () async {
+                  User myUser = await login();
+                  print(myUser);
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  Future<AuthUser> login() async {
+    return await _authProvider.loginWith(
+      callType: (AuthUser authuser) async {
+        //Fetch data from AuthUser object to your user object
+        return User();
+      },
+      method: GraphEmailLoginMethod(
+        apiLink: "MyLink",
+        graphLoginNode: Node(
+          name: "nodeName",
+          args: {},
+          cols: [],
+        ),
+      ),
+    );
+  }
+
+  Future<AuthUser> signup() async {
+    return await _authProvider.signUpWithEmail(
+      callType: (AuthUser authuser) async {
+        //Fetch data from AuthUser object to your user object
+        return User();
+      },
+      method: GraphEmailSignupMethod(
+        apiLink: "MyLink",
+        graphSignupNode: Node(
+          name: "nodeName",
+          args: {},
+          cols: [],
+        ),
+      ),
+    );
+  }
+}
+
+class User implements AuthUser {
+  @override
+  String expire;
+  @override
+  String id;
+  @override
+  String role;
+  @override
+  String token;
+  @override
+  String type;
+  @override
+  AuthUser fromJson(Map<String, dynamic> data) {
+    // TODO: implement fromJson
+    throw UnimplementedError();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    // TODO: implement toJson
+    throw UnimplementedError();
   }
 }
