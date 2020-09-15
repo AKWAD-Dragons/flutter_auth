@@ -4,7 +4,7 @@ import 'AuthMethod.dart';
 import 'package:apple_sign_in/apple_sign_in.dart';
 
 import 'AuthProviderUser.dart';
-import 'UserInterface.dart';
+import 'AuthUser.dart';
 
 class AppleAuthMethod implements AuthMethod {
   @override

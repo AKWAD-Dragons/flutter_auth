@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'AuthProviderUser.dart';
 
 import 'AuthMethod.dart';
-import 'UserInterface.dart';
+import 'AuthUser.dart';
 
 class GraphEmailLoginMethod implements AuthMethod {
   @override

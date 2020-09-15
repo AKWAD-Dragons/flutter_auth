@@ -5,7 +5,7 @@ import 'package:fly_networking/fly.dart';
 import 'AuthMethod.dart';
 import 'AuthProviderUser.dart';
 
-import 'UserInterface.dart';
+import 'AuthUser.dart';
 
 class GraphEmailSignupMethod implements AuthMethod {
   @override
