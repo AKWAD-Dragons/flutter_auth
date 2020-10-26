@@ -3,7 +3,7 @@ import UIKit
 
 public class SwiftFlutterAuthPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "flutter_auth", binaryMessenger: registrar.messenger())
+    let channel = FlutterMethodChannel(name: "auth_provider", binaryMessenger: registrar.messenger())
     let instance = SwiftFlutterAuthPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }

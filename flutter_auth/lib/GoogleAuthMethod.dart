@@ -1,4 +1,4 @@
-import 'package:flutter_auth/AuthProviderUser.dart';
+import 'package:auth_provider/AuthProviderUser.dart';
 
 import 'AppException.dart';
 import 'AuthMethod.dart';

@@ -1,8 +1,8 @@
 name: flutter_auth
 description: A new flutter plugin project.
-version: 1.0.0-dev.1
+version: 1.0.0-dev.5
 
-homepage: https://www.akwadtech.com
+repository: https://github.com/AKWAD-Dragons/auth_provider
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -34,7 +34,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.example.flutter_auth
+        package: com.example.auth_provider
         pluginClass: FlutterAuthPlugin
       ios:
         pluginClass: FlutterAuthPlugin

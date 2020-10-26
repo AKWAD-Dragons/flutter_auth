@@ -1,4 +1,4 @@
-# flutter_auth
+# auth_provider
 
 A new flutter plugin project.
 
