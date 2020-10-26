@@ -1,9 +1,9 @@
+import 'package:auth_provider/flutter_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_auth/flutter_auth.dart';
 
 void main() {
-  const MethodChannel channel = MethodChannel('flutter_auth');
+  const MethodChannel channel = MethodChannel('auth_provider');
 
   TestWidgetsFlutterBinding.ensureInitialized();
 

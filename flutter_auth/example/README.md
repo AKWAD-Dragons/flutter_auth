@@ -1,6 +1,6 @@
 # flutter_auth_example
 
-Demonstrates how to use the flutter_auth plugin.
+Demonstrates how to use the auth_provider plugin.
 
 ## Getting Started
 
