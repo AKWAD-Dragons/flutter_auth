@@ -1,3 +1,4 @@
-## 1.0.0-dev.6 - Sixth Version (Pre-release)
+## 1.0.0- First stable release
 
-* TODO: Added common authentication methods
+* Added Phone number authentication
+* Fixed pre-releases common issues
