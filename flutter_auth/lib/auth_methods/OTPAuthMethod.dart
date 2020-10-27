@@ -47,9 +47,6 @@ class OTPAuthMethod implements AuthMethod {
       codeAutoRetrievalTimeout: (String s) => print(s),
       timeout: Duration(seconds: 60),
     );
-
-    await fly.mutation([this.graphSignupNode]);
-    return AuthProviderUser();
   }
 
   @override
