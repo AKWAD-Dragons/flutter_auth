@@ -56,7 +56,7 @@ class OTPAuthMethod implements AuthMethod {
       verificationCompleted: verificationCompleted,
       verificationFailed: verificationFailed,
       codeSent: smsCodeSent,
-      codeAutoRetrievalTimeout: null,
+      codeAutoRetrievalTimeout: onRetrievalTimeout,
       timeout: Duration(seconds: 60),
     );
   }
@@ -70,6 +70,10 @@ class OTPAuthMethod implements AuthMethod {
   }
 
   void smsCodeSent(String verificationId, int forceCodeResend) {
+    this._verificationId = verificationId;
+  }
+
+  void onRetrievalTimeout(String verificationId) {
     this._verificationId = verificationId;
   }
 
