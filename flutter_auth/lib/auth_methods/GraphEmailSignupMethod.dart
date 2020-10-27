@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:fly_networking/GraphQB/graph_qb.dart';
 import 'package:fly_networking/fly.dart';
 
-import 'AuthMethod.dart';
-import 'AuthProviderUser.dart';
-
-import 'UserInterface.dart';
+import '../AuthMethod.dart';
+import '../AuthProviderUser.dart';
+import '../UserInterface.dart';
 
 class GraphEmailSignupMethod implements AuthMethod {
   @override

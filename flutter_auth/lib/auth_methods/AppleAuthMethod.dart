@@ -1,11 +1,10 @@
 import 'dart:convert';
 
-import 'AppException.dart';
-import 'AuthMethod.dart';
 import 'package:apple_sign_in/apple_sign_in.dart';
 
-import 'AuthProviderUser.dart';
-import 'UserInterface.dart';
+import '../AuthMethod.dart';
+import '../AuthProviderUser.dart';
+import '../UserInterface.dart';
 
 class AppleAuthMethod implements AuthMethod {
   @override
@@ -31,8 +30,7 @@ class AppleAuthMethod implements AuthMethod {
       case AuthorizationStatus.authorized:
         print(
             "The identitiy token is ${base64Encode(result.credential.identityToken)}");
-            print(
-            "The user token is ${result.credential.user}");
+        print("The user token is ${result.credential.user}");
         creds = {
           "idToken": result.credential.user,
         };
