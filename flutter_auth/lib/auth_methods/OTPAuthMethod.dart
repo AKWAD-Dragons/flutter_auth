@@ -16,7 +16,8 @@ class OTPAuthMethod implements AuthMethod {
 
   String _verificationId;
   String _smsCode;
-  String idToken;
+  String phoneNumber;
+  String _idToken;
 
   /// `Map` that gets called in `GraphQL` case
   Node otpAuthNode;
@@ -33,6 +34,7 @@ class OTPAuthMethod implements AuthMethod {
   Fly fly;
 
   OTPAuthMethod({
+    @required this.phoneNumber,
     @required this.otpAuthNode,
     @required this.apiLink,
   }) {
@@ -46,25 +48,20 @@ class OTPAuthMethod implements AuthMethod {
     AuthCredential credentials = PhoneAuthProvider.getCredential(
         verificationId: _verificationId, smsCode: _smsCode);
 
-    FirebaseAuth.instance.signInWithCredential(credentials).then(sendIdToken);
+    FirebaseAuth.instance.signInWithCredential(credentials).then(getIdToken);
 
-    Map result = await fly.mutation([otpAuthNode],
-        parsers: {otpAuthNode.name: AuthProviderUser()});
-    AuthProviderUser user = result[otpAuthNode.name];
-    return user;
+    return AuthProviderUser()..idToken = _idToken;
   }
 
-  void sendIdToken(UserCredential userCredentials) async {
-    //Firebase user
-    User user = userCredentials.user;
+  void getIdToken(UserCredential userCredentials) async {
+    User user = userCredentials.user; //Firebase user
 
     if (user == null) return;
 
-    idToken = await user.getIdToken();
-    print(idToken);
+    _idToken = await user.getIdToken();
   }
 
-  void sendSMS(String phoneNumber) async {
+  void sendSMS() async {
     await Firebase.initializeApp();
 
     await FirebaseAuth.instance.verifyPhoneNumber(
