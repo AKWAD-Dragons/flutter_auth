@@ -5,6 +5,7 @@ import 'package:fly_networking/GraphQB/graph_qb.dart';
 import 'package:fly_networking/fly.dart';
 
 import '../AuthMethod.dart';
+import '../AuthProviderUser.dart';
 import '../UserInterface.dart';
 
 class OTPAuthMethod implements AuthMethod {
@@ -15,10 +16,10 @@ class OTPAuthMethod implements AuthMethod {
 
   String _verificationId;
   String _smsCode;
-  String _idToken;
+  String idToken;
 
   /// `Map` that gets called in `GraphQL` case
-  Node graphSignupNode;
+  Node otpAuthNode;
 
   String apiLink;
 
@@ -32,7 +33,7 @@ class OTPAuthMethod implements AuthMethod {
   Fly fly;
 
   OTPAuthMethod({
-    @required this.graphSignupNode,
+    @required this.otpAuthNode,
     @required this.apiLink,
   }) {
     fly = Fly(this.apiLink);
@@ -46,6 +47,11 @@ class OTPAuthMethod implements AuthMethod {
         verificationId: _verificationId, smsCode: _smsCode);
 
     FirebaseAuth.instance.signInWithCredential(credentials).then(sendIdToken);
+
+    Map result = await fly.mutation([otpAuthNode],
+        parsers: {otpAuthNode.name: AuthProviderUser()});
+    AuthProviderUser user = result[otpAuthNode.name];
+    return user;
   }
 
   void sendIdToken(UserCredential userCredentials) async {
@@ -54,8 +60,8 @@ class OTPAuthMethod implements AuthMethod {
 
     if (user == null) return;
 
-    _idToken = await user.getIdToken();
-    print(_idToken);
+    idToken = await user.getIdToken();
+    print(idToken);
   }
 
   void sendSMS(String phoneNumber) async {
