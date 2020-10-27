@@ -1,4 +1,3 @@
-import 'GoogleAuthMethod.dart';
 import 'UserInterface.dart';
 
 abstract class AuthMethod {

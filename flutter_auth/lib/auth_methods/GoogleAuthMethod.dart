@@ -1,8 +1,8 @@
-import 'package:auth_provider/AuthProviderUser.dart';
-
-import 'AppException.dart';
-import 'AuthMethod.dart';
+import '../AppException.dart';
+import '../AuthMethod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import '../AuthProviderUser.dart';
 
 class GoogleAuthMethod implements AuthMethod {
   GoogleSignIn _googleSignIn = GoogleSignIn(
