@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fly_networking/GraphQB/graph_qb.dart';
 import 'package:fly_networking/fly.dart';
 
 import '../AuthMethod.dart';
-import '../AuthProviderUser.dart';
 import '../UserInterface.dart';
 
 class OTPAuthMethod implements AuthMethod {
@@ -12,6 +12,10 @@ class OTPAuthMethod implements AuthMethod {
 
   @override
   String serviceName = 'otp';
+
+  String _verificationId;
+  String _smsCode;
+  String _idToken;
 
   /// `Map` that gets called in `GraphQL` case
   Node graphSignupNode;
@@ -35,18 +39,52 @@ class OTPAuthMethod implements AuthMethod {
   }
 
   @override
+
+  ///Make sure you Sent the sms first, and you have the sms code.
   Future<AuthUser> auth() async {
+    AuthCredential credentials = PhoneAuthProvider.getCredential(
+        verificationId: _verificationId, smsCode: _smsCode);
+
+    FirebaseAuth.instance.signInWithCredential(credentials).then(sendIdToken);
+  }
+
+  void sendSMS(String phoneNumber) async {
+    await Firebase.initializeApp();
+
     await FirebaseAuth.instance.verifyPhoneNumber(
-      phoneNumber: "01008536916",
-      verificationCompleted: (PhoneAuthCredential phone) => print(phone),
-      verificationFailed: (FirebaseAuthException ex) => print(ex),
-      codeSent: (String s, int t) {
-        print(s);
-        print(t);
-      },
-      codeAutoRetrievalTimeout: (String s) => print(s),
+      phoneNumber: phoneNumber,
+      verificationCompleted: verificationCompleted,
+      verificationFailed: verificationFailed,
+      codeSent: smsCodeSent,
+      codeAutoRetrievalTimeout: null,
       timeout: Duration(seconds: 60),
     );
+  }
+
+  void verificationCompleted(PhoneAuthCredential credentials) {
+    FirebaseAuth.instance.signInWithCredential(credentials);
+  }
+
+  void verificationFailed(FirebaseAuthException exception) {
+    print(exception.message);
+  }
+
+  void smsCodeSent(String verificationId, int forceCodeResend) {
+    this._verificationId = verificationId;
+  }
+
+  void sendIdToken(UserCredential userCredentials) async {
+    //Firebase user
+    User user = userCredentials.user;
+
+    if (user == null) return;
+
+    _idToken = await user.getIdToken();
+    print(_idToken);
+  }
+
+  set setSMSCode(String smsCode) {
+    this._smsCode = smsCode;
   }
 
   @override
