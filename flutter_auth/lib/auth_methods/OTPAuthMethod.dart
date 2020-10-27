@@ -48,6 +48,16 @@ class OTPAuthMethod implements AuthMethod {
     FirebaseAuth.instance.signInWithCredential(credentials).then(sendIdToken);
   }
 
+  void sendIdToken(UserCredential userCredentials) async {
+    //Firebase user
+    User user = userCredentials.user;
+
+    if (user == null) return;
+
+    _idToken = await user.getIdToken();
+    print(_idToken);
+  }
+
   void sendSMS(String phoneNumber) async {
     await Firebase.initializeApp();
 
@@ -66,7 +76,7 @@ class OTPAuthMethod implements AuthMethod {
   }
 
   void verificationFailed(FirebaseAuthException exception) {
-    print(exception.message);
+    throw exception;
   }
 
   void smsCodeSent(String verificationId, int forceCodeResend) {
@@ -75,16 +85,6 @@ class OTPAuthMethod implements AuthMethod {
 
   void onRetrievalTimeout(String verificationId) {
     this._verificationId = verificationId;
-  }
-
-  void sendIdToken(UserCredential userCredentials) async {
-    //Firebase user
-    User user = userCredentials.user;
-
-    if (user == null) return;
-
-    _idToken = await user.getIdToken();
-    print(_idToken);
   }
 
   set setSMSCode(String smsCode) {
