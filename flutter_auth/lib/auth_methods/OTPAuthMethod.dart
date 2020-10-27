@@ -36,7 +36,7 @@ class OTPAuthMethod implements AuthMethod {
 
   @override
   Future<AuthUser> auth() async {
-    FirebaseAuth.instance.verifyPhoneNumber(
+    await FirebaseAuth.instance.verifyPhoneNumber(
       phoneNumber: "01008536916",
       verificationCompleted: (PhoneAuthCredential phone) => print(phone),
       verificationFailed: (FirebaseAuthException ex) => print(ex),
