@@ -15,12 +15,11 @@ class OTPAuthMethod implements AuthMethod {
   String serviceName = 'otp';
 
   String _verificationId;
-  String _smsCode;
   String phoneNumber;
-  String idToken;
+  String _idToken;
 
   /// `Map` that gets called in `GraphQL` case
-  Node otpAuthNode;
+  Node _otpAuthNode;
 
   String apiLink;
 
@@ -35,7 +34,6 @@ class OTPAuthMethod implements AuthMethod {
 
   OTPAuthMethod({
     @required this.phoneNumber,
-    @required this.otpAuthNode,
     @required this.apiLink,
   }) {
     fly = Fly(this.apiLink);
@@ -45,25 +43,27 @@ class OTPAuthMethod implements AuthMethod {
 
   ///Make sure you Sent the sms first, and you have the sms code.
   Future<AuthUser> auth() async {
-    // Authentication with Firebase
-    AuthCredential credentials = PhoneAuthProvider.getCredential(
-        verificationId: _verificationId, smsCode: _smsCode);
-    FirebaseAuth.instance.signInWithCredential(credentials).then(getIdToken);
-
     // Authentication with Back-end
-    Map result = await fly.mutation([otpAuthNode],
-        parsers: {otpAuthNode.name: AuthProviderUser()});
-    AuthProviderUser user = result[otpAuthNode.name];
+    Map result = await fly.mutation([_otpAuthNode],
+        parsers: {_otpAuthNode.name: AuthProviderUser()});
+    AuthProviderUser user = result[_otpAuthNode.name];
 
-    return user..idToken = idToken;
+    return user..idToken = _idToken;
   }
 
-  void getIdToken(UserCredential userCredentials) async {
-    User user = userCredentials.user; //Firebase user
+  Future<String> getIdToken(String smsCode) async {
+    // Authentication with Firebase
+    AuthCredential credentials = PhoneAuthProvider.getCredential(
+        verificationId: _verificationId, smsCode: smsCode);
 
-    if (user == null) return;
+    UserCredential userCredential =
+        await FirebaseAuth.instance.signInWithCredential(credentials);
 
-    idToken = await user.getIdToken();
+    if (userCredential == null) return null;
+
+    _idToken = await userCredential.user.getIdToken();
+
+    return _idToken;
   }
 
   void sendSMS() async {
@@ -95,8 +95,8 @@ class OTPAuthMethod implements AuthMethod {
     this._verificationId = verificationId;
   }
 
-  set setSMSCode(String smsCode) {
-    this._smsCode = smsCode;
+  set otpAuthNode(Node otpAuthNode) {
+    this._otpAuthNode = otpAuthNode;
   }
 
   @override
