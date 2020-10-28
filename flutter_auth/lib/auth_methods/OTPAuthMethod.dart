@@ -15,7 +15,6 @@ class OTPAuthMethod implements AuthMethod {
   String serviceName = 'otp';
 
   String _verificationId;
-  String _smsCode;
   String phoneNumber;
   String _idToken;
 
@@ -52,10 +51,10 @@ class OTPAuthMethod implements AuthMethod {
     return user..idToken = _idToken;
   }
 
-  Future<String> getIdToken() async {
+  Future<String> getIdToken(String smsCode) async {
     // Authentication with Firebase
     AuthCredential credentials = PhoneAuthProvider.getCredential(
-        verificationId: _verificationId, smsCode: _smsCode);
+        verificationId: _verificationId, smsCode: smsCode);
 
     UserCredential userCredential =
         await FirebaseAuth.instance.signInWithCredential(credentials);
@@ -94,10 +93,6 @@ class OTPAuthMethod implements AuthMethod {
 
   void onRetrievalTimeout(String verificationId) {
     this._verificationId = verificationId;
-  }
-
-  set smsCode(String smsCode) {
-    this._smsCode = smsCode;
   }
 
   set otpAuthNode(Node otpAuthNode) {
