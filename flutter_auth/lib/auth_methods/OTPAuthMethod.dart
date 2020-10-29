@@ -94,12 +94,6 @@ class OTPAuthMethod implements AuthMethod {
 
   @override
   Future<void> logout() async {
-    await fly.query([
-      Node(
-        name: 'logout',
-        args: {},
-        cols: [],
-      )
-    ]);
+    await FirebaseAuth.instance.signOut();
   }
 }
