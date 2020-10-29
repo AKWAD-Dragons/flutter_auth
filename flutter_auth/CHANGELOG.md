@@ -1,4 +1,3 @@
-## 1.0.0- First stable release
+## 1.0.2- First stable release
 
-* Added Phone number authentication
-* Fixed pre-releases common issues
+* Added User logout bug fixes
