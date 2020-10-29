@@ -19,7 +19,6 @@ class OTPAuthMethod implements AuthMethod {
   String _idToken;
 
   /// `Map` that gets called in `GraphQL` case
-  Node _otpAuthNode;
 
   String apiLink;
 
@@ -43,17 +42,15 @@ class OTPAuthMethod implements AuthMethod {
 
   ///Make sure you Sent the sms first, and you have the sms code.
   Future<AuthUser> auth() async {
-    // Authentication with Back-end
-    Map result = await fly.mutation([_otpAuthNode],
-        parsers: {_otpAuthNode.name: AuthProviderUser()});
-    AuthProviderUser user = result[_otpAuthNode.name];
-
-    return user..idToken = _idToken;
+    return AuthProviderUser()..idToken = _idToken;
   }
 
   Future<String> getIdToken(String smsCode) async {
     // Authentication with Firebase
-    AuthCredential credentials = PhoneAuthProvider.getCredential(
+    if (FirebaseAuth.instance.currentUser != null)
+      return FirebaseAuth.instance.currentUser.getIdToken();
+
+    AuthCredential credentials = PhoneAuthProvider.credential(
         verificationId: _verificationId, smsCode: smsCode);
 
     UserCredential userCredential =
@@ -93,10 +90,6 @@ class OTPAuthMethod implements AuthMethod {
 
   void onRetrievalTimeout(String verificationId) {
     this._verificationId = verificationId;
-  }
-
-  set otpAuthNode(Node otpAuthNode) {
-    this._otpAuthNode = otpAuthNode;
   }
 
   @override
