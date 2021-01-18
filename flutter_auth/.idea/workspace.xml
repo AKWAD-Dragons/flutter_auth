@@ -2,9 +2,138 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80b4c528-194e-4f7c-88e5-b155f3e5aca2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/auth_methods/AmazonAuthMethod.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/.metadata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/android/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/android/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/android/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/android/libs/login-with-amazon-sdk.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/android/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/android/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/android/src/main/java/com/github/ayvazj/flutter_lwa/LwaAuthorizeListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/android/src/main/java/com/github/ayvazj/flutter_lwa/LwaDelegate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/android/src/main/java/com/github/ayvazj/flutter_lwa/LwaMethodHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/android/src/main/java/com/github/ayvazj/flutter_lwa/LwaPlugin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/android/src/main/java/com/github/ayvazj/flutter_lwa/MainThreadResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/assets/images/2.0/btnlwa_gold_loginwithamazon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/assets/images/2.0/btnlwa_gold_loginwithamazon_pressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/assets/images/3.0/btnlwa_gold_loginwithamazon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/assets/images/3.0/btnlwa_gold_loginwithamazon_pressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/assets/images/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/assets/images/btnlwa_gold_loginwithamazon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/assets/images/btnlwa_gold_loginwithamazon_pressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/.metadata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/app/src/main/assets/api_key.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/app/src/main/java/com/github/ayvazj/lwa_example/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/app/src/main/res/drawable/launch_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/app/src/profile/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/debug.3p.keystore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/res/values/strings_en.arb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/android/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Flutter/Debug.xcconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Flutter/Release.xcconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Podfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Podfile.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/AppDelegate.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/AppDelegate.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Base.lproj/LaunchScreen.storyboard" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Base.lproj/Main.storyboard" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/ios/Runner/main.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/lib/generated/i18n.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/lib/main.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/example/pubspec.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/Assets/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/Classes/LwaDelegate.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/Classes/LwaDelegate.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/Classes/LwaPlugin.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/Classes/LwaPlugin.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Headers" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/LoginWithAmazon" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Modules/module.modulemap" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/AMZNAuthorizationManager.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/AMZNAuthorizeRequest.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/AMZNAuthorizeResult.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/AMZNCodePairManager.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/AMZNCodePairRequest.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/AMZNCreateCodePairRequest.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/AMZNCreateCodePairResult.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/AMZNGetTokenRequest.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/AMZNGetTokenResult.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/AMZNLWAAuthenticationDelegate.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/AMZNLWAError.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/AMZNLWAMobileLib.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/AMZNLWASDKInfo.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/AMZNLWASettings.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/AMZNProfileScope.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/AMZNRegion.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/AMZNScope.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/AMZNScopeFactory.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/AMZNUser.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/Headers/LoginWithAmazon.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/A/LoginWithAmazon" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/Versions/Current" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/LoginWithAmazon.framework/brazil-compress-log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/ios/flutter_lwa.podspec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/lib/generated/i18n.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/lib/lwa.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/lib/scope.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/lib/widgets.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/pubspec.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amazon_ios/flutter_lwa/res/values/strings_en.arb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +159,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../fly" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager">
@@ -65,13 +194,13 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1610279073234">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1610281841803">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1610279073234" />
-    <state x="474" y="145" width="588" height="534" key="find.popup" timestamp="1610272518361">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1610281841803" />
+    <state x="474" y="145" width="588" height="534" key="find.popup" timestamp="1610323519957">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="474" y="145" width="588" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1610272518361" />
+    <state x="474" y="145" width="588" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1610323519957" />
   </component>
 </project>

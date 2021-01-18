@@ -1,6 +1,6 @@
 name: auth_provider
 description: A flutter authentication managemnt tool
-version: 1.0.3
+version: 1.0.3-hotfix.5
 
 repository: https://github.com/AKWAD-Dragons/auth_provider
 
@@ -19,7 +19,6 @@ dependencies:
   fly_networking: ^2.0.2
   firebase_core: ^0.5.0+1
   firebase_auth: ^0.18.1+2
-  flutter_lwa: ^0.1.0
   login_with_amazon: ^0.3.0+1
 
 dev_dependencies:
