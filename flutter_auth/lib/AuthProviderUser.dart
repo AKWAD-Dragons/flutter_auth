@@ -14,6 +14,7 @@ class AuthProviderUser implements AuthUser, Parser<AuthProviderUser> {
   String id;
   String role;
   String type;
+  String postalCode;
 
   AuthProviderUser();
 
