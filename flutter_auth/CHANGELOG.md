@@ -25,3 +25,19 @@
 ## 1.0.3-hotfix.5
 
 * Fixed duplicate LWA SDK JAR files in Android
+
+## 1.0.3-hotfix.6
+
+* Added Amazon swift code
+
+## 1.0.3-hotfix.7
+
+* Unified Amazon auth packages
+
+## 1.0.3-hotfix.8
+
+* Removed redundant assets directory
+
+## 1.0.3-hotfix.9
+
+* added postal code to auth user

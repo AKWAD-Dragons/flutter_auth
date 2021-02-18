@@ -1,11 +1,10 @@
 import 'dart:io';
-
 import 'package:auth_provider/AuthMethod.dart';
 import 'package:auth_provider/AuthProviderUser.dart';
 import 'package:auth_provider/UserInterface.dart';
 import 'package:flutter/services.dart';
-import 'package:get_it/get_it.dart';
-import 'package:login_with_amazon/login_with_amazon.dart';
+import 'package:fly_networking/Auth/AppException.dart';
+import 'package:flutter_lwa/lwa.dart';
 
 class AmazonAuthMethod implements AuthMethod {
   @override
@@ -15,9 +14,17 @@ class AmazonAuthMethod implements AuthMethod {
   static const platform = const MethodChannel('flutter/amazon');
   String postalCode;
 
-
+  LoginWithAmazon _loginWithAmazon = LoginWithAmazon(
+    scopes: <Scope>[ProfileScope.profile(), ProfileScope.postalCode()],
+  );
+  LwaAuthorizeResult _lwaAuth;
 
   AmazonAuthMethod() {
+    _loginWithAmazon.onLwaAuthorizeChanged.listen((LwaAuthorizeResult auth) {
+      _lwaAuth = auth;
+    });
+    _loginWithAmazon.signInSilently();
+
     this.serviceName = 'Amazon';
   }
 
@@ -26,11 +33,11 @@ class AmazonAuthMethod implements AuthMethod {
     if (this.user != null) {
       return this.user;
     }
-    Map _lwaUser;
-    if (!Platform.isIOS) {
+    if (Platform.isAndroid) {
+      LwaUser lwaUser;
       try {
-        _lwaUser =
-            await LoginWithAmazon.login({"profile": null, "postal_code": null});
+        _lwaAuth = await _loginWithAmazon.signIn();
+        lwaUser = await _loginWithAmazon.fetchUserProfile();
       } catch (error) {
         if (error is PlatformException) {
           print(error.message);
@@ -39,10 +46,10 @@ class AmazonAuthMethod implements AuthMethod {
         }
         return null;
       }
-      postalCode = _lwaUser["user"]["userPostalCode"];
+      postalCode = lwaUser.userPostalCode;
       creds = {
-        "idToken": _lwaUser["user"]["userId"],
-        "accessToken": _lwaUser["accessToken"]
+        "idToken": lwaUser.userId,
+        "accessToken": _lwaAuth.accessToken
       };
       this.user = AuthProviderUser().fromJson(creds);
       this.user.postalCode = postalCode;
@@ -76,8 +83,18 @@ class AmazonAuthMethod implements AuthMethod {
       await platform.invokeMethod('amazonLogout');
     } else {
       //Logout from amazon android
-      LoginWithAmazon.logout();
+      _handleSignOut();
     }
     return null;
   }
+
+  Future<void> _handleSignIn() async {
+    try {
+      await _loginWithAmazon.signIn();
+    } catch (error) {
+      throw AppException(true, beautifulMsg: error.toString());
+    }
+  }
+
+  Future<void> _handleSignOut() => _loginWithAmazon.signOut();
 }
