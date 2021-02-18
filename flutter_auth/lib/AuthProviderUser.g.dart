@@ -15,6 +15,7 @@ AuthProviderUser _$AuthProviderUserFromJson(Map<String, dynamic> json) {
     ..id = json['id'] as String
     ..role = json['role'] as String
     ..type = json['type'] as String
+    ..postalCode = json['postalCode'] as String
     ..querys = (json['querys'] as List)?.map((e) => e as String)?.toList();
 }
 

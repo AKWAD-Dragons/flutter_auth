@@ -45,6 +45,7 @@ class AmazonAuthMethod implements AuthMethod {
         "accessToken": _lwaUser["accessToken"]
       };
       this.user = AuthProviderUser().fromJson(creds);
+      this.user.postalCode = postalCode;
       return this.user;
     } else {
       try {
@@ -58,6 +59,7 @@ class AmazonAuthMethod implements AuthMethod {
             "accessToken": returnedUser["token"]
           };
           this.user = AuthProviderUser().fromJson(creds);
+          this.user.postalCode = postalCode;
           return this.user;
         } else {
           return null;
