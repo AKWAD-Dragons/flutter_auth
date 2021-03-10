@@ -85,3 +85,11 @@
 ## 1.0.3-hotfix.20
 
 * added flutter SDK home to access local modules dependency
+
+## 1.0.4-pre.1
+
+* added twilio auth method
+
+## 1.0.4-pre.2
+
+* refined twilio auth method
