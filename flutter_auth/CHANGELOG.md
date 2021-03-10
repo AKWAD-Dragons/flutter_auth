@@ -41,3 +41,47 @@
 ## 1.0.3-hotfix.9
 
 * added postal code to auth user
+
+## 1.0.3-hotfix.10
+
+* changed amazon token
+
+## 1.0.3-hotfix.11
+
+* minor test change
+
+## 1.0.3-hotfix.12
+
+* minor test change
+
+## 1.0.3-hotfix.13
+
+* minor test change
+
+## 1.0.3-hotfix.14
+
+* minor test change
+
+## 1.0.3-hotfix.15
+
+* minor test change
+
+## 1.0.3-hotfix.16
+
+* minor test change
+
+## 1.0.3-hotfix.17
+
+* minor test change
+
+## 1.0.3-hotfix.18
+
+* Re-wrote amazon android plugin
+
+## 1.0.3-hotfix.19
+
+* fixed android method channel issue after first login
+
+## 1.0.3-hotfix.20
+
+* added flutter SDK home to access local modules dependency
