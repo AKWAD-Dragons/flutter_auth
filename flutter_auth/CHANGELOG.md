@@ -101,3 +101,7 @@
 ## 1.0.5
 
 * fixed logout issues
+
+## 1.0.6
+
+* added phone auth method
