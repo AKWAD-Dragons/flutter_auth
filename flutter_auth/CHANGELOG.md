@@ -117,3 +117,7 @@
 ## 1.0.6-hotfix.3
 
 * fixed phone logout
+
+## 1.0.6-hotfix.4
+
+* fixed iOS amazon issues with codemagic
