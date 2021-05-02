@@ -34,6 +34,6 @@ class PhoneAuthMethod implements AuthMethod {
 
   @override
   Future<void> logout() async {
-    await _fly.mutation([Node(name: 'logout_user')]);
+    await _fly.query([Node(name: 'logout')]);
   }
 }

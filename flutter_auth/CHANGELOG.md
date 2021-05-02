@@ -105,3 +105,15 @@
 ## 1.0.6
 
 * added phone auth method
+
+## 1.0.6-hotfix.1
+
+* fixed phone logout
+
+## 1.0.6-hotfix.2
+
+* fixed phone logout
+
+## 1.0.6-hotfix.3
+
+* fixed phone logout

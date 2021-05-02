@@ -1,6 +1,6 @@
 name: auth_provider
 description: A flutter authentication managemnt tool
-version: 1.0.6
+version: 1.0.6-hotfix.3
 
 repository: https://github.com/AKWAD-Dragons/auth_provider
 
