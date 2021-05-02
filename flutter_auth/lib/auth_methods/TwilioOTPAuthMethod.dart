@@ -34,6 +34,6 @@ class TwilioOTPAuthMethod implements AuthMethod {
 
   @override
   Future<void> logout() async {
-    await _fly.query([Node(name: 'logout')]);
+    await _fly.mutation([Node(name: 'logout_user')]);
   }
 }

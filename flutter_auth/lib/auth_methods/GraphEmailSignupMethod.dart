@@ -22,29 +22,23 @@ class GraphEmailSignupMethod implements AuthMethod {
   Object errorKey;
   Function(Object error) errorFunction;
 
-  Fly fly;
+  Fly _fly;
 
   GraphEmailSignupMethod({
     @required this.graphSignupNode,
     @required this.apiLink,
   }) {
-    fly = Fly(this.apiLink);
+    _fly = Fly(this.apiLink);
   }
 
   @override
   Future<AuthUser> auth() async {
-    await fly.mutation([this.graphSignupNode]);
+    await _fly.mutation([this.graphSignupNode]);
     return AuthProviderUser();
   }
 
   @override
   Future<void> logout() async {
-    await fly.query([
-      Node(
-        name: 'logout',
-        args: {},
-        cols: [],
-      )
-    ]);
+    await _fly.mutation([Node(name: 'logout_user')]);
   }
 }

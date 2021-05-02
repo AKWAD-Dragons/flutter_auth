@@ -29,13 +29,13 @@ class OTPAuthMethod implements AuthMethod {
   Object errorKey;
   Function(Object error) errorFunction;
 
-  Fly fly;
+  Fly _fly;
 
   OTPAuthMethod({
     @required this.phoneNumber,
     @required this.apiLink,
   }) {
-    fly = Fly(this.apiLink);
+    _fly = Fly(this.apiLink);
   }
 
   @override
@@ -95,5 +95,6 @@ class OTPAuthMethod implements AuthMethod {
   @override
   Future<void> logout() async {
     await FirebaseAuth.instance.signOut();
+    await _fly.mutation([Node(name: 'logout_user')]);
   }
 }

@@ -93,3 +93,11 @@
 ## 1.0.4-pre.2
 
 * refined twilio auth method
+
+## 1.0.4
+
+* tested new auth methods
+
+## 1.0.5
+
+* fixed logout issues
