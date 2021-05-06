@@ -121,3 +121,7 @@
 ## 1.0.6-hotfix.4
 
 * fixed iOS amazon issues with codemagic
+
+## 1.0.6-hotfix.5
+
+* supported legacy code
