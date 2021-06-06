@@ -125,3 +125,7 @@
 ## 1.0.6-hotfix.5
 
 * supported legacy code
+
+## 1.0.6-hotfix.6
+
+* added minor change

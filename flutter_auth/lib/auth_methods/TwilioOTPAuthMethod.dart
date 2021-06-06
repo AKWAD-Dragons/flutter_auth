@@ -26,9 +26,9 @@ class TwilioOTPAuthMethod implements AuthMethod {
     return user;
   }
 
-  Future<void> sendSMS() async {
+  Future<void> sendSMS({String to}) async {
     await _fly.mutation([
-      Node(name: "sendOTP", args: {"phone": phoneNumber})
+      Node(name: "sendOTP", args: {"phone": phoneNumber, "type": '_'+to})
     ]);
   }
 
