@@ -26,42 +26,27 @@ class AppleAuthMethod implements AuthMethod {
       return this.user;
     }
 
-    // final AuthorizationResult result = await AppleSignIn.performRequests([
-    //   AppleIdRequest(requestedScopes: [Scope.email, Scope.fullName])
-    // ]);
-
-    final AuthorizationCredentialAppleID result = await SignInWithApple.getAppleIDCredential(
+    final AuthorizationCredentialAppleID result =
+        await SignInWithApple.getAppleIDCredential(
       scopes: [
         AppleIDAuthorizationScopes.email,
         AppleIDAuthorizationScopes.fullName,
       ],
     );
 
-    switch (result.status) {
-      case AuthorizationStatus.authorized:
-        print(
-            "The identitiy token is ${base64Encode(result.credential.identityToken)}");
-        print("The user token is ${result.credential.user}");
-        creds = {
-          "idToken": result.credential.user,
-        };
-        this.user = AuthProviderUser().fromJson(creds);
-        return this.user;
-        break;
-
-      case AuthorizationStatus.error:
-        print("Sign in failed: ${result.error.localizedDescription}");
-        return null;
-        break;
-
-      case AuthorizationStatus.cancelled:
-        print('User cancelled');
-        break;
+    if (result.identityToken != null && result.userIdentifier != null) {
+      print("The identitiy token is ${result.identityToken}");
+      print("The user token is ${result.userIdentifier}");
+      creds = {
+        "idToken": result.identityToken!,
+      };
+      this.user = AuthProviderUser().fromJson(creds);
+      return this.user;
     }
   }
 
   @override
-  Future<void> logout() async{
+  Future<void> logout() async {
     await _fly.mutation([Node(name: 'logout_user')]);
   }
 }

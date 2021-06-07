@@ -1,4 +1,5 @@
 #import "FlutterAuthPlugin.h"
+#import <LoginWithAmazon/LoginWithAmazon.h>
 #if __has_include(<auth_provider/auth_provider-Swift.h>)
 #import <auth_provider/auth_provider-Swift.h>
 #else
@@ -11,5 +12,7 @@
 @implementation FlutterAuthPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   [SwiftFlutterAuthPlugin registerWithRegistrar:registrar];
+  return [AMZNAuthorizationManager handleOpenURL:url
+                                 sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]];
 }
 @end
