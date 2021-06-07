@@ -14,20 +14,20 @@ class OTPAuthMethod implements AuthMethod {
   @override
   String serviceName = 'otp';
 
-  String _verificationId;
-  String phoneNumber;
-  String _idToken;
+  String _verificationId = '';
+  String phoneNumber = '';
+  String _idToken = '';
 
   /// `Map` that gets called in `GraphQL` case
 
-  String apiLink;
+  String? apiLink;
 
   /// How you expect to find the token in responce `Map`, to be `String`, `Map`, `dynamic`, ...
-  Object tokenKey;
+  Object? tokenKey;
 
   /// How you expect to find the error in responce `Map`, to be `String`, `Map`, `dynamic`, ...
-  Object errorKey;
-  Function(Object error) errorFunction;
+  Object? errorKey;
+  Function(Object error)? errorFunction;
 
   Fly _fly;
 
@@ -48,7 +48,7 @@ class OTPAuthMethod implements AuthMethod {
   Future<String> getIdToken(String smsCode) async {
     // Authentication with Firebase
     if (FirebaseAuth.instance.currentUser != null)
-      return FirebaseAuth.instance.currentUser.getIdToken();
+      return FirebaseAuth.instance.currentUser!.getIdToken();
 
     AuthCredential credentials = PhoneAuthProvider.credential(
         verificationId: _verificationId, smsCode: smsCode);
@@ -56,9 +56,9 @@ class OTPAuthMethod implements AuthMethod {
     UserCredential userCredential =
         await FirebaseAuth.instance.signInWithCredential(credentials);
 
-    if (userCredential == null) return null;
+    if (userCredential == null) return '';
 
-    _idToken = await userCredential.user.getIdToken();
+    _idToken = await userCredential.user!.getIdToken();
 
     return _idToken;
   }
@@ -84,7 +84,7 @@ class OTPAuthMethod implements AuthMethod {
     throw exception;
   }
 
-  void smsCodeSent(String verificationId, int forceCodeResend) {
+  void smsCodeSent(String verificationId, int? forceCodeResend) {
     this._verificationId = verificationId;
   }
 

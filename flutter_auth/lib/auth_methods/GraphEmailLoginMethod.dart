@@ -14,14 +14,14 @@ class GraphEmailLoginMethod implements AuthMethod {
   /// `Map` that gets called in `GraphQL` case
   Node graphLoginNode;
 
-  String apiLink;
+  String? apiLink;
 
   /// How you expect to find the token in responce, `Map`, to be `String`, `Map`, `dynamic`, ...
-  Object tokenKey;
+  Object? tokenKey;
 
   /// How you expect to find the error in responce, `Map`, to be `String`, `Map`, `dynamic`, ...
-  Object errorKey;
-  Function(Object error) errorFunction;
+  Object? errorKey;
+  Function(Object error)? errorFunction;
 
   Fly _fly;
 

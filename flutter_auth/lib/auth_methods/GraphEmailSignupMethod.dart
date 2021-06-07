@@ -13,7 +13,7 @@ class GraphEmailSignupMethod implements AuthMethod {
   /// `Map` that gets called in `GraphQL` case
   Node graphSignupNode;
 
-  String apiLink;
+  String? apiLink;
 
   /// How you expect to find the token in responce `Map`, to be `String`, `Map`, `dynamic`, ...
   Object tokenKey;

@@ -1,19 +1,18 @@
 import 'dart:convert';
 
-import 'package:apple_sign_in/apple_sign_in.dart';
 import 'package:fly_networking/GraphQB/graph_qb.dart';
 import 'package:fly_networking/fly.dart';
-
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import '../AuthMethod.dart';
 import '../AuthProviderUser.dart';
 import '../UserInterface.dart';
 
 class AppleAuthMethod implements AuthMethod {
   @override
-  String serviceName;
-  Map<String, String> creds;
-  AuthUser user;
-  String apiLink;
+  String serviceName = 'Apple';
+  late Map<String, String> creds;
+  AuthUser? user;
+  String? apiLink;
   Fly _fly;
 
   AppleAuthMethod({this.apiLink}) {
@@ -22,14 +21,21 @@ class AppleAuthMethod implements AuthMethod {
   }
 
   @override
-  Future<AuthUser> auth() async {
+  Future<AuthUser?> auth() async {
     if (this.user != null) {
       return this.user;
     }
 
-    final AuthorizationResult result = await AppleSignIn.performRequests([
-      AppleIdRequest(requestedScopes: [Scope.email, Scope.fullName])
-    ]);
+    // final AuthorizationResult result = await AppleSignIn.performRequests([
+    //   AppleIdRequest(requestedScopes: [Scope.email, Scope.fullName])
+    // ]);
+
+    final AuthorizationCredentialAppleID result = await SignInWithApple.getAppleIDCredential(
+      scopes: [
+        AppleIDAuthorizationScopes.email,
+        AppleIDAuthorizationScopes.fullName,
+      ],
+    );
 
     switch (result.status) {
       case AuthorizationStatus.authorized:

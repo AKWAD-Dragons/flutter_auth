@@ -7,14 +7,14 @@ part 'AuthProviderUser.g.dart';
 
 @JsonSerializable()
 class AuthProviderUser implements AuthUser, Parser<AuthProviderUser> {
-  String accessToken;
-  String idToken;
-  String expire;
-  String token;
-  String id;
-  String role;
-  String type;
-  String postalCode;
+  String? accessToken;
+  String? idToken;
+  String? expire;
+  String? token;
+  String? id;
+  String? role;
+  String? type;
+  String? postalCode;
 
   AuthProviderUser();
 
@@ -32,7 +32,7 @@ class AuthProviderUser implements AuthUser, Parser<AuthProviderUser> {
   }
 
   @override
-  List<String> querys;
+  List<String>? querys;
 
   @override
   dynamicParse(data) {

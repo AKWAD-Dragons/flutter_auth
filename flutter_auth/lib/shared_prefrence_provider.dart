@@ -2,12 +2,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesProvider {
   ///// Singleton
-  static SharedPreferencesProvider _spProvider;
+  static SharedPreferencesProvider? _spProvider;
 
-  SharedPreferences prefs;
+  SharedPreferences? prefs;
   String LOCALE = "LOCALE";
 
-  static SharedPreferencesProvider instance() {
+  static SharedPreferencesProvider? instance() {
     if (_spProvider == null) {
       _spProvider = SharedPreferencesProvider._();
     }
@@ -18,7 +18,7 @@ class SharedPreferencesProvider {
 
   Future<String> getLocale() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString(LOCALE);
+    return prefs.getString(LOCALE)!;
   }
 
   Future<void> setLocale(String locale) async {

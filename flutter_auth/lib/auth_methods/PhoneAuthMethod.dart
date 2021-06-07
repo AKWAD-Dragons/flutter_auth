@@ -10,9 +10,9 @@ class PhoneAuthMethod implements AuthMethod {
 
   Fly _fly;
   Node phoneLoginNode;
-  String phoneNumber;
+  String? phoneNumber;
 
-  String apiLink;
+  String? apiLink;
 
   PhoneAuthMethod({this.phoneLoginNode, this.apiLink, this.phoneNumber}) {
     _fly = Fly(this.apiLink);

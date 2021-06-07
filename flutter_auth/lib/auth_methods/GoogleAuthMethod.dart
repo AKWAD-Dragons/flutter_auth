@@ -15,10 +15,10 @@ class GoogleAuthMethod implements AuthMethod {
   );
 
   @override
-  String serviceName;
-  String id;
-  AuthProviderUser user;
-  String apiLink;
+  String serviceName = 'google';
+  String id = '';
+  AuthProviderUser user = AuthProviderUser();
+  String? apiLink;
   Fly _fly;
 
   GoogleAuthMethod({this.apiLink}) {
@@ -32,11 +32,11 @@ class GoogleAuthMethod implements AuthMethod {
       return this.user;
     }
 
-    GoogleSignInAuthentication auth;
+    GoogleSignInAuthentication? auth;
     try {
-      GoogleSignInAccount account = await _googleSignIn.signIn();
-      auth = await account.authentication;
-      id = _googleSignIn.currentUser.id;
+      GoogleSignInAccount? account = await _googleSignIn.signIn();
+      auth = await account!.authentication;
+      id = _googleSignIn.currentUser!.id;
       print(id);
     } catch (e, s) {
       new AppException(true,
@@ -46,7 +46,7 @@ class GoogleAuthMethod implements AuthMethod {
           uglyMsg: s.toString());
     }
     Map<String, String> creds = {
-      "accessToken": auth.accessToken,
+      "accessToken": auth!.accessToken.toString(),
       "idToken": id,
     };
     this.user = AuthProviderUser().fromJson(creds);

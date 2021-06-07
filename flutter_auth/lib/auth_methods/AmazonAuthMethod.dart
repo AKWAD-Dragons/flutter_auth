@@ -4,26 +4,26 @@ import 'package:auth_provider/AuthProviderUser.dart';
 import 'package:auth_provider/UserInterface.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_lwa/lwa.dart';
+import 'package:flutter_lwa_platform_interface/flutter_lwa_platform_interface.dart';
 import 'package:fly_networking/GraphQB/graph_qb.dart';
 import 'package:fly_networking/fly.dart';
 
 class AmazonAuthMethod implements AuthMethod {
   @override
-  String serviceName;
-  Map<String, String> creds;
-  AuthUser user;
+  String serviceName = 'Amazon';
+  late Map<String, String> creds;
+  AuthUser? user;
   static const platform = const MethodChannel('flutter/amazon');
   static const MethodChannel _androidChannel =
       const MethodChannel('android/amazon');
-  String postalCode;
-  String apiLink;
+  late String postalCode;
+  String? apiLink;
   Fly _fly;
-
 
   LoginWithAmazon _loginWithAmazon = LoginWithAmazon(
     scopes: <Scope>[ProfileScope.profile(), ProfileScope.postalCode()],
   );
-  LwaAuthorizeResult _lwaAuth;
+  LwaAuthorizeResult? _lwaAuth;
 
   AmazonAuthMethod({this.apiLink}) {
     this.serviceName = 'Amazon';
@@ -31,7 +31,7 @@ class AmazonAuthMethod implements AuthMethod {
   }
 
   @override
-  Future<AuthUser> auth() async {
+  Future<AuthUser?> auth() async {
     if (this.user != null) {
       return this.user;
     }
@@ -49,14 +49,14 @@ class AmazonAuthMethod implements AuthMethod {
           "postalCode": postalCode
         };
         user = AuthProviderUser().fromJson(creds);
-        return user;
+        return user!;
       } catch (error) {
         if (error is PlatformException) {
           print('AMAZON PlatformException ERROR ===>${error.message}');
         } else {
           print('AMAZON AUTH ERROR ===>${error.toString()}');
         }
-        return null;
+        throw error;
       }
     } else {
       try {
@@ -71,13 +71,12 @@ class AmazonAuthMethod implements AuthMethod {
             "postalCode": user["postal_code"]
           };
           this.user = AuthProviderUser().fromJson(creds);
-          this.user.postalCode = postalCode;
-          return this.user;
-        } else {
-          return null;
+          this.user!.postalCode = postalCode;
+          return this.user!;
         }
       } on PlatformException catch (e) {
         print(e.toString());
+        throw e;
       }
     }
   }

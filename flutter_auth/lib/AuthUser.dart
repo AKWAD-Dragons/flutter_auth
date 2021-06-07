@@ -3,16 +3,16 @@ import 'dart:convert';
 import 'package:fly_networking/fly.dart';
 
 class AuthUser implements Parser<AuthUser> {
-  String credintials;
-  String expire;
-  String token;
-  String id;
-  String role;
-  String email;
-  String first_logged;
-  String postalCode;
+  String? credintials;
+  String? expire;
+  String? token;
+  String? id;
+  String? role;
+  String? email;
+  String? first_logged;
+  String? postalCode;
 
-  AuthUser({this.token, this.postalCode, Map<String, String> credintials}) {
+  AuthUser({this.token, this.postalCode, Map<String, String>? credintials}) {
     this.credintials = jsonEncode(credintials);
   }
 
@@ -75,5 +75,5 @@ class AuthUser implements Parser<AuthUser> {
   }
 
   @override
-  List<String> querys;
+  List<String>? querys;
 }

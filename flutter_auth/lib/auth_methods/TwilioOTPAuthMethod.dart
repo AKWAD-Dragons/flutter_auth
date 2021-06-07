@@ -10,9 +10,9 @@ class TwilioOTPAuthMethod implements AuthMethod {
 
   Fly _fly;
   Node twilioLoginNode;
-  String phoneNumber;
+  String? phoneNumber;
 
-  String apiLink;
+  String? apiLink;
 
   TwilioOTPAuthMethod({this.twilioLoginNode, this.apiLink, this.phoneNumber}) {
     _fly = Fly(this.apiLink);
@@ -26,7 +26,7 @@ class TwilioOTPAuthMethod implements AuthMethod {
     return user;
   }
 
-  Future<void> sendSMS({String to}) async {
+  Future<void> sendSMS({String to = 'forget'}) async {
     await _fly.mutation([
       Node(name: "sendOTP", args: {"phone": phoneNumber, "type": '_'+to})
     ]);

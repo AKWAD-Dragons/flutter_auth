@@ -19,10 +19,10 @@ import 'AuthMethod.dart';
 import 'UserInterface.dart';
 
 class AuthProvider<T extends AuthUser> {
-  AuthUser _user;
-  Type _authMethodType;
+  AuthUser? _user;
+  Type? _authMethodType;
 
-  SharedPreferences sharedPreferences;
+  late SharedPreferences sharedPreferences;
   static const String USER_TAG = "__user__";
 
   T get user => _user as T;
@@ -31,7 +31,7 @@ class AuthProvider<T extends AuthUser> {
     this._user = authUser;
   }
 
-  void init() async {
+  Future<void> init() async {
     // setup shared Pref
     this.sharedPreferences = await SharedPreferences.getInstance();
 
@@ -48,9 +48,9 @@ class AuthProvider<T extends AuthUser> {
     return _user != null ? true : false;
   }
 
-  bool isExpired(AuthUser user) {
+  bool isExpired(AuthUser? user) {
     try {
-      DateTime expireDate = DateTime.parse(user.expire);
+      DateTime expireDate = DateTime.parse(user!.expire!);
       DateTime todayDate = DateTime.now();
 
       print("The expire date is $expireDate");
@@ -69,11 +69,11 @@ class AuthProvider<T extends AuthUser> {
     }
   }
 
-  Future<AuthUser> signUpWithEmail({
-    AuthMethod method,
-    Future<AuthUser> Function(AuthUser authUser) callType,
+  Future<AuthUser?> signUpWithEmail({
+    AuthMethod? method,
+    Future<AuthUser> Function(AuthUser? authUser)? callType,
   }) async {
-    _user = await method.auth();
+    _user = await method!.auth();
 
     // add the auth method type later use
     _authMethodType = method.runtimeType;
@@ -86,11 +86,11 @@ class AuthProvider<T extends AuthUser> {
     return _user;
   }
 
-  Future<AuthUser> loginWith({
-    AuthMethod method,
-    Future<AuthUser> Function(AuthUser authuser) callType,
+  Future<AuthUser?> loginWith({
+    AuthMethod? method,
+    Future<AuthUser> Function(AuthUser? authuser)? callType,
   }) async {
-    _user = await method.auth();
+    _user = await method!.auth();
 
     // add the auth method type later use
     _authMethodType = method.runtimeType;
@@ -105,7 +105,7 @@ class AuthProvider<T extends AuthUser> {
     return _user;
   }
 
-  Future<void> logout({AuthMethod from}) {
+  Future<void>? logout({AuthMethod? from}) {
     if (from != null) {
       from.logout();
     }
@@ -114,18 +114,20 @@ class AuthProvider<T extends AuthUser> {
   }
 
   Future<void> saveUser(savedUser) async {
-    this.sharedPreferences.setString(USER_TAG, jsonEncode(this._user.toJson()));
+    this
+        .sharedPreferences
+        .setString(USER_TAG, jsonEncode(this._user!.toJson()));
   }
 
   Future<void> deleteUser() async {
     this.sharedPreferences.remove(USER_TAG);
   }
 
-  Future<AuthUser> getUser() async {
+  Future<AuthUser?> getUser() async {
     return sharedPreferences.getString(USER_TAG) == null
         ? this._user
         : this
-            ._user
-            .fromJson(jsonDecode(sharedPreferences.getString(USER_TAG)));
+            ._user!
+            .fromJson(jsonDecode(sharedPreferences.getString(USER_TAG)!));
   }
 }
