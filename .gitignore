@@ -23,3 +23,4 @@ flutter_auth/.idea/
 .idea/
 flutter_auth/.fvm/flutter_sdk
 flutter_auth/.fvm/fvm_config.json
+/.fvm

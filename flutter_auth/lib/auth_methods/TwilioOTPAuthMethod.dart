@@ -3,6 +3,7 @@ import 'package:auth_provider/AuthProviderUser.dart';
 import 'package:auth_provider/UserInterface.dart';
 import 'package:fly_networking/GraphQB/graph_qb.dart';
 import 'package:fly_networking/fly.dart';
+import 'package:get_it/get_it.dart';
 
 class TwilioOTPAuthMethod implements AuthMethod {
   @override
@@ -14,9 +15,9 @@ class TwilioOTPAuthMethod implements AuthMethod {
 
   String? apiLink;
 
-  TwilioOTPAuthMethod({this.twilioLoginNode, this.apiLink, this.phoneNumber}) {
-    _fly = Fly(this.apiLink);
-  }
+  TwilioOTPAuthMethod(
+      {required this.twilioLoginNode, this.apiLink, this.phoneNumber})
+      : _fly = GetIt.instance<Fly>();
 
   @override
   Future<AuthUser> auth() async {
@@ -28,7 +29,7 @@ class TwilioOTPAuthMethod implements AuthMethod {
 
   Future<void> sendSMS({String to = 'forget'}) async {
     await _fly.mutation([
-      Node(name: "sendOTP", args: {"phone": phoneNumber, "type": '_'+to})
+      Node(name: "sendOTP", args: {"phone": phoneNumber, "type": '_' + to})
     ]);
   }
 

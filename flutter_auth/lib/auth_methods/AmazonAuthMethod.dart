@@ -7,6 +7,7 @@ import 'package:flutter_lwa/lwa.dart';
 import 'package:flutter_lwa_platform_interface/flutter_lwa_platform_interface.dart';
 import 'package:fly_networking/GraphQB/graph_qb.dart';
 import 'package:fly_networking/fly.dart';
+import 'package:get_it/get_it.dart';
 
 class AmazonAuthMethod implements AuthMethod {
   @override
@@ -25,10 +26,9 @@ class AmazonAuthMethod implements AuthMethod {
   );
   LwaAuthorizeResult? _lwaAuth;
 
-  AmazonAuthMethod({this.apiLink}) {
-    this.serviceName = 'Amazon';
-    _fly = Fly(this.apiLink);
-  }
+  AmazonAuthMethod()
+      : _fly = GetIt.instance<Fly>(),
+        this.serviceName = 'Amazon';
 
   @override
   Future<AuthUser?> auth() async {

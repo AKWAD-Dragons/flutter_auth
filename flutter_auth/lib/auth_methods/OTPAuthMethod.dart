@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
 import 'package:fly_networking/GraphQB/graph_qb.dart';
 import 'package:fly_networking/fly.dart';
+import 'package:get_it/get_it.dart';
 
 import '../AuthMethod.dart';
 import '../AuthProviderUser.dart';
@@ -32,11 +32,8 @@ class OTPAuthMethod implements AuthMethod {
   Fly _fly;
 
   OTPAuthMethod({
-    @required this.phoneNumber,
-    @required this.apiLink,
-  }) {
-    _fly = Fly(this.apiLink);
-  }
+    required this.phoneNumber,
+  }) : _fly = GetIt.instance<Fly>();
 
   @override
 

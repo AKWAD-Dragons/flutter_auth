@@ -1,7 +1,6 @@
-import 'dart:convert';
-
 import 'package:fly_networking/GraphQB/graph_qb.dart';
 import 'package:fly_networking/fly.dart';
+import 'package:get_it/get_it.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import '../AuthMethod.dart';
 import '../AuthProviderUser.dart';
@@ -15,10 +14,9 @@ class AppleAuthMethod implements AuthMethod {
   String? apiLink;
   Fly _fly;
 
-  AppleAuthMethod({this.apiLink}) {
-    this.serviceName = 'Apple';
-    _fly = Fly(this.apiLink);
-  }
+  AppleAuthMethod()
+      : _fly = GetIt.instance<Fly>(),
+        this.serviceName = 'Apple';
 
   @override
   Future<AuthUser?> auth() async {

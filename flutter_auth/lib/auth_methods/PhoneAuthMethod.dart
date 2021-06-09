@@ -3,6 +3,7 @@ import 'package:auth_provider/AuthProviderUser.dart';
 import 'package:auth_provider/UserInterface.dart';
 import 'package:fly_networking/GraphQB/graph_qb.dart';
 import 'package:fly_networking/fly.dart';
+import 'package:get_it/get_it.dart';
 
 class PhoneAuthMethod implements AuthMethod {
   @override
@@ -14,9 +15,8 @@ class PhoneAuthMethod implements AuthMethod {
 
   String? apiLink;
 
-  PhoneAuthMethod({this.phoneLoginNode, this.apiLink, this.phoneNumber}) {
-    _fly = Fly(this.apiLink);
-  }
+  PhoneAuthMethod({required this.phoneLoginNode, this.phoneNumber})
+      : _fly = GetIt.instance<Fly>();
 
   @override
   Future<AuthUser> auth() async {

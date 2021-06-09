@@ -1,7 +1,7 @@
 import 'package:fly_networking/GraphQB/graph_qb.dart';
 import 'package:fly_networking/fly.dart';
 
-import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 import '../AuthMethod.dart';
 import '../AuthProviderUser.dart';
@@ -25,12 +25,8 @@ class GraphEmailLoginMethod implements AuthMethod {
 
   Fly _fly;
 
-  GraphEmailLoginMethod({
-    @required this.graphLoginNode,
-    @required this.apiLink,
-  }) {
-    _fly = Fly(this.apiLink);
-  }
+  GraphEmailLoginMethod({required this.graphLoginNode})
+      : _fly = GetIt.instance<Fly>();
 
   @override
   Future<AuthUser> auth() async {
