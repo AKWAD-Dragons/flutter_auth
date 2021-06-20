@@ -21,3 +21,4 @@ doc/api/
 *.js.map
 flutter_auth/.idea/
 .idea/
+flutter_auth/.fvm/

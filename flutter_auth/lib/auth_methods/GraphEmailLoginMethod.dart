@@ -25,16 +25,20 @@ class GraphEmailLoginMethod implements AuthMethod {
 
   Fly _fly;
 
+  String language;
+
   GraphEmailLoginMethod({
     @required this.graphLoginNode,
     @required this.apiLink,
+    this.language,
   }) {
     _fly = Fly(this.apiLink);
   }
 
   @override
   Future<AuthUser> auth() async {
-    Map result = await _fly.mutation([graphLoginNode],
+    fly.addHeaders({'lang': language});
+    Map result = await fly.mutation([graphLoginNode],
         parsers: {graphLoginNode.name: AuthProviderUser()});
     AuthProviderUser user = result[graphLoginNode.name];
     return user;
