@@ -36,8 +36,8 @@ class GraphEmailSignupMethod implements AuthMethod {
 
   @override
   Future<AuthUser> auth() async {
-    fly.addHeaders({'lang': language});
-    await fly.mutation([this.graphSignupNode]);
+    _fly.addHeaders({'lang': language});
+    await _fly.mutation([this.graphSignupNode]);
     return AuthProviderUser();
   }
 

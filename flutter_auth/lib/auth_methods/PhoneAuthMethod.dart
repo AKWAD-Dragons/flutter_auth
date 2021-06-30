@@ -11,15 +11,16 @@ class PhoneAuthMethod implements AuthMethod {
   Fly _fly;
   Node phoneLoginNode;
   String phoneNumber;
-
+  String language;
   String apiLink;
 
-  PhoneAuthMethod({this.phoneLoginNode, this.apiLink, this.phoneNumber}) {
+  PhoneAuthMethod({this.phoneLoginNode, this.apiLink, this.phoneNumber, this.language}) {
     _fly = Fly(this.apiLink);
   }
 
   @override
   Future<AuthUser> auth() async {
+    _fly.addHeaders({'lang': language});
     Map result = await _fly.mutation([phoneLoginNode],
         parsers: {phoneLoginNode.name: AuthProviderUser()});
     AuthProviderUser user = result[phoneLoginNode.name];

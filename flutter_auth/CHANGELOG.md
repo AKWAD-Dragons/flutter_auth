@@ -129,3 +129,11 @@
 ## 1.0.6-hotfix.6
 
 * added minor change
+
+## 1.0.6-hotfix.7
+
+* added language to login & signup
+
+## 1.0.6-hotfix.8
+
+* added language to phone auth methods

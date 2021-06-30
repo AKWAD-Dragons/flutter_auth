@@ -28,12 +28,13 @@ class OTPAuthMethod implements AuthMethod {
   /// How you expect to find the error in responce `Map`, to be `String`, `Map`, `dynamic`, ...
   Object errorKey;
   Function(Object error) errorFunction;
-
+  String language;
   Fly _fly;
 
   OTPAuthMethod({
     @required this.phoneNumber,
     @required this.apiLink,
+    this.language,
   }) {
     _fly = Fly(this.apiLink);
   }

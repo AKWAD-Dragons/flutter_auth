@@ -11,15 +11,17 @@ class TwilioOTPAuthMethod implements AuthMethod {
   Fly _fly;
   Node twilioLoginNode;
   String phoneNumber;
-
+  String language;
   String apiLink;
 
-  TwilioOTPAuthMethod({this.twilioLoginNode, this.apiLink, this.phoneNumber}) {
+  TwilioOTPAuthMethod(
+      {this.twilioLoginNode, this.apiLink, this.phoneNumber, this.language}) {
     _fly = Fly(this.apiLink);
   }
 
   @override
   Future<AuthUser> auth() async {
+    _fly.addHeaders({'lang': language});
     Map result = await _fly.mutation([twilioLoginNode],
         parsers: {twilioLoginNode.name: AuthProviderUser()});
     AuthProviderUser user = result[twilioLoginNode.name];
@@ -28,7 +30,7 @@ class TwilioOTPAuthMethod implements AuthMethod {
 
   Future<void> sendSMS({String to}) async {
     await _fly.mutation([
-      Node(name: "sendOTP", args: {"phone": phoneNumber, "type": '_'+to})
+      Node(name: "sendOTP", args: {"phone": phoneNumber, "type": '_' + to})
     ]);
   }
 
