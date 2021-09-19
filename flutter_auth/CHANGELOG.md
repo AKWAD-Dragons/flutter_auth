@@ -137,3 +137,11 @@
 ## 1.0.6-hotfix.8
 
 * added language to phone auth methods
+
+## 1.0.6-hotfix.9
+
+* removed fly internal object
+
+## 1.0.6-hotfix.10
+
+* fixed twilio auth method

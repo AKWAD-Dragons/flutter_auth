@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:fly_networking/AppException.dart';
 import 'package:fly_networking/GraphQB/graph_qb.dart';
 import 'package:fly_networking/fly.dart';
@@ -19,11 +20,10 @@ class GoogleAuthMethod implements AuthMethod {
   String id;
   AuthProviderUser user;
   String apiLink;
-  Fly _fly;
+  Fly fly;
 
-  GoogleAuthMethod({this.apiLink}) {
+  GoogleAuthMethod({this.apiLink, @required this.fly}) {
     this.serviceName = 'google';
-    _fly = Fly(this.apiLink);
   }
 
   @override
@@ -56,6 +56,6 @@ class GoogleAuthMethod implements AuthMethod {
   @override
   Future<void> logout() async {
     _googleSignIn.disconnect();
-    await _fly.mutation([Node(name: 'logout_user')]);
+    await fly.mutation([Node(name: 'logout_user')]);
   }
 }

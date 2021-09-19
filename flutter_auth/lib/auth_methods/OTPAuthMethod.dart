@@ -28,16 +28,13 @@ class OTPAuthMethod implements AuthMethod {
   /// How you expect to find the error in responce `Map`, to be `String`, `Map`, `dynamic`, ...
   Object errorKey;
   Function(Object error) errorFunction;
-  String language;
-  Fly _fly;
+  Fly fly;
 
   OTPAuthMethod({
     @required this.phoneNumber,
     @required this.apiLink,
-    this.language,
-  }) {
-    _fly = Fly(this.apiLink);
-  }
+    @required this.fly,
+  });
 
   @override
 
@@ -96,6 +93,6 @@ class OTPAuthMethod implements AuthMethod {
   @override
   Future<void> logout() async {
     await FirebaseAuth.instance.signOut();
-    await _fly.mutation([Node(name: 'logout_user')]);
+    await fly.mutation([Node(name: 'logout_user')]);
   }
 }

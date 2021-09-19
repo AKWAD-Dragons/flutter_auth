@@ -23,22 +23,16 @@ class GraphEmailLoginMethod implements AuthMethod {
   Object errorKey;
   Function(Object error) errorFunction;
 
-  Fly _fly;
+  Fly fly;
 
-  String language;
-
-  GraphEmailLoginMethod({
-    @required this.graphLoginNode,
-    @required this.apiLink,
-    this.language,
-  }) {
-    _fly = Fly(this.apiLink);
-  }
+  GraphEmailLoginMethod(
+      {@required this.graphLoginNode,
+      @required this.apiLink,
+      @required this.fly});
 
   @override
   Future<AuthUser> auth() async {
-    _fly.addHeaders({'lang': language});
-    Map result = await _fly.mutation([graphLoginNode],
+    Map result = await fly.mutation([graphLoginNode],
         parsers: {graphLoginNode.name: AuthProviderUser()});
     AuthProviderUser user = result[graphLoginNode.name];
     return user;
@@ -46,6 +40,6 @@ class GraphEmailLoginMethod implements AuthMethod {
 
   @override
   Future<void> logout() async {
-    await _fly.mutation([Node(name: 'logout_user')]);
+    await fly.mutation([Node(name: 'logout_user')]);
   }
 }

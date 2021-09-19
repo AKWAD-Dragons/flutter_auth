@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:auth_provider/AuthMethod.dart';
 import 'package:auth_provider/AuthProviderUser.dart';
 import 'package:auth_provider/UserInterface.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_lwa/lwa.dart';
 import 'package:fly_networking/GraphQB/graph_qb.dart';
@@ -17,7 +18,7 @@ class AmazonAuthMethod implements AuthMethod {
       const MethodChannel('android/amazon');
   String postalCode;
   String apiLink;
-  Fly _fly;
+  Fly fly;
 
 
   LoginWithAmazon _loginWithAmazon = LoginWithAmazon(
@@ -25,9 +26,8 @@ class AmazonAuthMethod implements AuthMethod {
   );
   LwaAuthorizeResult _lwaAuth;
 
-  AmazonAuthMethod({this.apiLink}) {
+  AmazonAuthMethod({this.apiLink, @required this.fly}) {
     this.serviceName = 'Amazon';
-    _fly = Fly(this.apiLink);
   }
 
   @override
@@ -90,7 +90,7 @@ class AmazonAuthMethod implements AuthMethod {
       //Logout from amazon android
       bool loggedOut = false;
       loggedOut = await _androidChannel.invokeMethod('signOut');
-      await _fly.mutation([Node(name: 'logout_user')]);
+      await fly.mutation([Node(name: 'logout_user')]);
       if (!loggedOut) {
         throw 'Couldn\'t log out from Amazon';
       }

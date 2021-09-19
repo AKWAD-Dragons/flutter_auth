@@ -22,27 +22,22 @@ class GraphEmailSignupMethod implements AuthMethod {
   Object errorKey;
   Function(Object error) errorFunction;
 
-  Fly _fly;
-
-  String language;
+  Fly fly;
 
   GraphEmailSignupMethod({
     @required this.graphSignupNode,
     @required this.apiLink,
-    this.language,
-  }) {
-    _fly = Fly(this.apiLink);
-  }
+    @required this.fly,
+  });
 
   @override
   Future<AuthUser> auth() async {
-    _fly.addHeaders({'lang': language});
-    await _fly.mutation([this.graphSignupNode]);
+    await fly.mutation([this.graphSignupNode]);
     return AuthProviderUser();
   }
 
   @override
   Future<void> logout() async {
-    await _fly.mutation([Node(name: 'logout_user')]);
+    await fly.mutation([Node(name: 'logout_user')]);
   }
 }
