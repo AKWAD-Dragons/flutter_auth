@@ -129,3 +129,7 @@
 ## 1.0.6-hotfix.6
 
 * added minor change
+
+## 2.0.0
+
+* migrated to flutter 2.x

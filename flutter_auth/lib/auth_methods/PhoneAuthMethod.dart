@@ -20,9 +20,9 @@ class PhoneAuthMethod implements AuthMethod {
 
   @override
   Future<AuthUser> auth() async {
-    Map result = await _fly.mutation([phoneLoginNode],
+    Map? result = await _fly.mutation([phoneLoginNode],
         parsers: {phoneLoginNode.name: AuthProviderUser()});
-    AuthProviderUser user = result[phoneLoginNode.name];
+    AuthProviderUser user = result?[phoneLoginNode.name];
     return user;
   }
 

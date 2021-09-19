@@ -21,9 +21,9 @@ class TwilioOTPAuthMethod implements AuthMethod {
 
   @override
   Future<AuthUser> auth() async {
-    Map result = await _fly.mutation([twilioLoginNode],
+    Map? result = await _fly.mutation([twilioLoginNode],
         parsers: {twilioLoginNode.name: AuthProviderUser()});
-    AuthProviderUser user = result[twilioLoginNode.name];
+    AuthProviderUser user = result?[twilioLoginNode.name];
     return user;
   }
 

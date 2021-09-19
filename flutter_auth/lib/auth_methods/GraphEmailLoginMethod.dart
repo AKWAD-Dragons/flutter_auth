@@ -30,9 +30,9 @@ class GraphEmailLoginMethod implements AuthMethod {
 
   @override
   Future<AuthUser> auth() async {
-    Map result = await _fly.mutation([graphLoginNode],
+    Map? result = await _fly.mutation([graphLoginNode],
         parsers: {graphLoginNode.name: AuthProviderUser()});
-    AuthProviderUser user = result[graphLoginNode.name];
+    AuthProviderUser user = result?[graphLoginNode.name];
     return user;
   }
 
