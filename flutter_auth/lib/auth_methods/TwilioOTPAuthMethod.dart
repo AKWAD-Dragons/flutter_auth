@@ -10,26 +10,26 @@ class TwilioOTPAuthMethod implements AuthMethod {
   String serviceName = 'twilio_otp';
 
   Fly _fly;
-  Node twilioLoginNode;
+  Node? twilioLoginNode;
   String? phoneNumber;
 
   String? apiLink;
 
-  TwilioOTPAuthMethod(
-      {required this.twilioLoginNode, this.apiLink, this.phoneNumber})
+  TwilioOTPAuthMethod({this.twilioLoginNode, this.apiLink, this.phoneNumber})
       : _fly = GetIt.instance<Fly>();
 
   @override
-  Future<AuthUser> auth() async {
-    Map? result = await _fly.mutation([twilioLoginNode],
-        parsers: {twilioLoginNode.name: AuthProviderUser()});
-    AuthProviderUser user = result?[twilioLoginNode.name];
+  Future<AuthUser?> auth() async {
+    if (twilioLoginNode == null) throw 'Login Node is required for authentication';
+    Map? result = await _fly.mutation([twilioLoginNode!],
+        parsers: {twilioLoginNode!.name: AuthProviderUser()});
+    AuthProviderUser user = result?[twilioLoginNode!.name];
     return user;
   }
 
-  Future<void> sendSMS({String to = 'forget'}) async {
+  Future<void> sendSMS() async {
     await _fly.mutation([
-      Node(name: "sendOTP", args: {"phone": phoneNumber, "type": '_' + to})
+      Node(name: "sendOTP", args: {"phone": phoneNumber})
     ]);
   }
 

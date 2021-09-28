@@ -133,3 +133,7 @@
 ## 2.0.0
 
 * migrated to flutter 2.x
+
+## 2.0.1
+
+* fixed twilio auth method
