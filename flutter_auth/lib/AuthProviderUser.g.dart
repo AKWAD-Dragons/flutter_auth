@@ -8,15 +8,14 @@ part of 'AuthProviderUser.dart';
 
 AuthProviderUser _$AuthProviderUserFromJson(Map<String, dynamic> json) {
   return AuthProviderUser()
-    ..accessToken = json['accessToken'] as String
-    ..idToken = json['idToken'] as String
-    ..expire = json['expire'] as String
-    ..token = json['jwtToken'] as String
-    ..id = json['id'] as String
-    ..role = json['role'] as String
-    ..type = json['type'] as String
-    ..postalCode = json['postalCode'] as String
-    ..querys = (json['querys'] as List).map((e) => e as String).toList();
+    ..accessToken = json['accessToken'] as String?
+    ..idToken = json['idToken'] as String?
+    ..expire = json['expire'] as String?
+    ..token = json['jwtToken'] as String?
+    ..id = json['id'] as String?
+    ..role = json['role'] as String?
+    ..type = json['type'] as String?
+    ..postalCode = json['postalCode'] as String?;
 }
 
 Map<String, dynamic> _$AuthProviderUserToJson(AuthProviderUser instance) =>

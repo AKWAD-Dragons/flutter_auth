@@ -137,3 +137,7 @@
 ## 2.0.1
 
 * fixed twilio auth method
+
+## 2.0.2
+
+* added ability to disable caching

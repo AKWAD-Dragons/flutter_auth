@@ -24,11 +24,13 @@ class AuthProvider<T extends AuthUser> {
 
   late SharedPreferences sharedPreferences;
   static const String USER_TAG = "__user__";
+  late bool disableCaching;
 
   T get user => _user as T;
 
-  AuthProvider(AuthUser authUser) {
+  AuthProvider(AuthUser authUser, {bool disableCaching = false}) {
     this._user = authUser;
+    this.disableCaching = disableCaching;
   }
 
   Future<void> init() async {
@@ -87,16 +89,16 @@ class AuthProvider<T extends AuthUser> {
   }
 
   Future<AuthUser?> loginWith({
-    AuthMethod? method,
-    Future<AuthUser> Function(AuthUser? authuser)? callType,
+    required AuthMethod method,
+    required Future<AuthUser> Function(AuthUser? authuser) callType,
   }) async {
-    _user = await method!.auth();
+    _user = await method.auth();
 
     // add the auth method type later use
     _authMethodType = method.runtimeType;
 
     // send it to the api
-    if (callType != null && _user != null) {
+    if (_user != null) {
       _user = await callType(_user);
       await saveUser(_user);
     }
@@ -114,12 +116,14 @@ class AuthProvider<T extends AuthUser> {
   }
 
   Future<void> saveUser(savedUser) async {
+    if(disableCaching) return;
     this
         .sharedPreferences
         .setString(USER_TAG, jsonEncode(this._user!.toJson()));
   }
 
   Future<void> deleteUser() async {
+    if(disableCaching) return;
     this.sharedPreferences.remove(USER_TAG);
   }
 

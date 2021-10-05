@@ -6,7 +6,7 @@ import 'UserInterface.dart';
 part 'AuthProviderUser.g.dart';
 
 @JsonSerializable()
-class AuthProviderUser implements AuthUser, Parser<AuthProviderUser> {
+class AuthProviderUser with AuthUser, Parser<AuthProviderUser> {
   String? accessToken;
   String? idToken;
   String? expire;
@@ -30,9 +30,6 @@ class AuthProviderUser implements AuthUser, Parser<AuthProviderUser> {
   AuthProviderUser fromJson(Map<String, dynamic> data) {
     return AuthProviderUser.fromJson(data);
   }
-
-  @override
-  List<String>? querys;
 
   @override
   dynamicParse(data) {
