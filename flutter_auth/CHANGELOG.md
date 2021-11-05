@@ -145,3 +145,19 @@
 ## 1.0.6-hotfix.10
 
 * fixed twilio auth method
+
+## 1.0.6-hotfix.11
+
+* fixed twilio auth method
+
+## 1.0.6-hotfix.12
+
+* removed amazon from old version
+
+## 1.0.6-hotfix.13
+
+* fixed package issues after amazon removal
+
+## 1.0.6-hotfix.14
+
+* removed redundant code

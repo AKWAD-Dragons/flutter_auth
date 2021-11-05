@@ -45,8 +45,3 @@ if (localPropertiesFile.exists()) {
 }
 
 def flutterRoot = localProperties.getProperty('flutter.sdk')
-
-
-dependencies {
-    implementation fileTree(dir: flutterRoot + '/.pub-cache/hosted/pub.dartlang.org/flutter_lwa-0.2.0/android/libs', include: ['*.aar', '*.jar'], exclude: [])
-}
