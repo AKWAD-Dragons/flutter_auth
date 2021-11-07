@@ -161,3 +161,7 @@
 ## 1.0.6-hotfix.14
 
 * removed redundant code
+
+## 1.0.6-hotfix.15
+
+* restored optional language headers
