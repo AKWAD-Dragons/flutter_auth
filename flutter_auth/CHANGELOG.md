@@ -149,3 +149,7 @@
 ## 2.0.4
 
 * removed amazon iOS native dependency
+
+## 2.0.5
+
+* removed amazon iOS native dependency
