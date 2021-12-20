@@ -141,3 +141,11 @@
 ## 2.0.2
 
 * added ability to disable caching
+
+## 2.0.3
+
+* removed amazon native dependency
+
+## 2.0.4
+
+* removed amazon iOS native dependency
