@@ -7,7 +7,8 @@
 // https://forums.swift.org/t/swift-static-libraries-dont-copy-generated-objective-c-header/19816
 #import "auth_provider-Swift.h"
 #endif
-​@implementation FlutterAuthPlugin
+​
+@implementation FlutterAuthPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   [SwiftFlutterAuthPlugin registerWithRegistrar:registrar];
 }
