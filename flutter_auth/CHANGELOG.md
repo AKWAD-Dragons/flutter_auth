@@ -158,7 +158,7 @@
 
 * removed amazon iOS native dependency
 
-## 2.0.7
+## 2.0.8
 
 * Fixed an issue with GoogleAuthMethod
 * Fixed an issue with saveUser function
