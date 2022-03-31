@@ -2,10 +2,9 @@ import 'package:fly_networking/AppException.dart';
 import 'package:fly_networking/GraphQB/graph_qb.dart';
 import 'package:fly_networking/fly.dart';
 import 'package:get_it/get_it.dart';
-
-import '../AuthMethod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../AuthMethod.dart';
 import '../AuthProviderUser.dart';
 
 class GoogleAuthMethod implements AuthMethod {
@@ -40,7 +39,7 @@ class GoogleAuthMethod implements AuthMethod {
       print(id);
     } catch (e, s) {
       new AppException(true,
-          name: "googleAuthFailed",
+          title: "googleAuthFailed",
           code: 500,
           beautifulMsg: "Google Signing didn't work",
           uglyMsg: s.toString());
