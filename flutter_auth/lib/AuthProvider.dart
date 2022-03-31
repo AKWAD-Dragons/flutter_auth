@@ -14,8 +14,8 @@
 import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
-import 'AuthMethod.dart';
 
+import 'AuthMethod.dart';
 import 'UserInterface.dart';
 
 class AuthProvider<T extends AuthUser> {
@@ -115,15 +115,14 @@ class AuthProvider<T extends AuthUser> {
     deleteUser();
   }
 
-  Future<void> saveUser(savedUser) async {
-    if(disableCaching) return;
-    this
-        .sharedPreferences
-        .setString(USER_TAG, jsonEncode(this._user!.toJson()));
+  Future<void> saveUser(AuthUser? savedUser) async {
+    if (disableCaching) return;
+    this.sharedPreferences.setString(
+        USER_TAG, jsonEncode(savedUser?.toJson() ?? _user!.toJson()));
   }
 
   Future<void> deleteUser() async {
-    if(disableCaching) return;
+    if (disableCaching) return;
     this.sharedPreferences.remove(USER_TAG);
   }
 
