@@ -45,7 +45,7 @@ class OTPAuthMethod implements AuthMethod {
   Future<String> getIdToken(String smsCode) async {
     // Authentication with Firebase
     if (FirebaseAuth.instance.currentUser != null)
-      return FirebaseAuth.instance.currentUser!.getIdToken();
+      return (await FirebaseAuth.instance.currentUser!.getIdToken()) ?? '';
 
     AuthCredential credentials = PhoneAuthProvider.credential(
         verificationId: _verificationId, smsCode: smsCode);
@@ -55,7 +55,7 @@ class OTPAuthMethod implements AuthMethod {
 
     if (userCredential == null) return '';
 
-    _idToken = await userCredential.user!.getIdToken();
+    _idToken = (await userCredential.user!.getIdToken()) ?? '';
 
     return _idToken;
   }

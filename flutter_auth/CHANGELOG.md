@@ -162,3 +162,7 @@
 
 * Fixed an issue with GoogleAuthMethod
 * Fixed an issue with saveUser function
+
+## 2.0.9
+
+* Upgraded to flutter 3
