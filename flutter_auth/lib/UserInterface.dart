@@ -1,8 +1,10 @@
+import 'Role.dart';
+
 abstract class AuthUser {
   String? expire;
   String? id;
   String? token;
-  String? role;
+  List<Role>? role;
   String? type;
   String? postalCode;
 
