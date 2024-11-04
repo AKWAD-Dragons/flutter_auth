@@ -4,13 +4,20 @@ version '1.0'
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:8.1.2'
     }
 }
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
 allprojects {
     repositories {
         google()
@@ -18,19 +25,14 @@ allprojects {
     }
 }
 
-rootProject.allprojects {
-    repositories {
-        google()
-        jcenter()
-    }
-}
+
 
 apply plugin: 'com.android.library'
 
 android {
       // Conditional for compatibility with AGP <4.2.
  
-      namespace= "com.example.auth_provider"
+      namespace "com.example.auth_provider"
   
 
     compileSdkVersion 34
